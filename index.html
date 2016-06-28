@@ -4,9 +4,10 @@
   </head>
   <body aurelia-app="main">
     <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="node_modules/typescript/lib/typescript.js"></script>
     <script src="config.js"></script>
     <script>
-      System.import("main");
+      console.log(System.import("main"));// .catch(function(err){ console.log(err); })
     </script>
   </body>
 </html>

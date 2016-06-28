@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "systemjs": "^0.19.31"
+    "systemjs": "^0.19.31",
+    "typescript": "^1.8.10"
   }
 }
