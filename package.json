@@ -1,0 +1,11 @@
+{
+  "name": "js_modules_examples",
+  "version": "1.0.0",
+  "description": "example of how to use System.js for the loading of js modules",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olena D.",
+  "license": "ISC"
+}
