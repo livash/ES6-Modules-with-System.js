@@ -13,3 +13,9 @@ This reposotory is created for the JavaScript book club.
 `npm start` to start the express server
 
 view the app on `localhost:5000`
+
+#### Note about Windows
+
+to run this app you need node.js and npm intalled.
+
+Use [http://blog.teamtreehouse.com/install-node-js-npm-windows}(http://blog.teamtreehouse.com/install-node-js-npm-windows)
