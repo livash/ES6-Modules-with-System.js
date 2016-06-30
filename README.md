@@ -18,4 +18,4 @@ view the app on `localhost:5000`
 
 to run this app you need node.js and npm intalled.
 
-Use [http://blog.teamtreehouse.com/install-node-js-npm-windows}(http://blog.teamtreehouse.com/install-node-js-npm-windows)
+Use [http://blog.teamtreehouse.com/install-node-js-npm-windows](http://blog.teamtreehouse.com/install-node-js-npm-windows)
