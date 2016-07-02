@@ -34,6 +34,17 @@ export class Node {
     return result;
   }
 
+  // add another list to the end of an existing list
+  // i.e. concatenate two lists together
+  // for example, list1.concat(list2)
+	concat(node) {
+		let n = this;
+		while(n.next !== null) {
+			n = n.next;
+		}
+		n.next = node;
+	}
+
   /*
   @param head - first node in the linked list
   @param value - value of the node which needs to be removed
@@ -80,6 +91,15 @@ export class Node {
     return list;
   }
 
+  static makeReverseList(numElements) {
+    let list = new Node(numElements);
+    for (let i = numElements - 1; i > 0; i--) {
+      list.addToTail(i);
+    }
+
+    return list;
+  }
+
   static makeListWithDups() {
     let list1 = Node.makeListOf(5);
     let list2 = Node.makeListOf(5);
@@ -110,6 +130,41 @@ export class Node {
 	}
 
 	  return (delta === k) ? p1.value : null;
+  }
+
+  /*
+    @param list - linked list
+    @param x - value
+    result - a linked list where nodes with value less than 'x' are on the left of x
+            and nodes with value greater than 'x' are on the right of x.
+  */
+  static parseList(list, x) {
+  	let left, right;
+  	let n = list;
+  	while(n !== null) {
+  		if (n.value > x) {
+        if (!!right) {
+          right.addToTail(n.value);
+        } else {
+          right = new Node(n.value);
+        }
+  		} else if (n.value === x) {
+  			let newNode = new Node(x);
+  			newNode.next = right;
+  			right = newNode;
+  		} else { // add elements to the left linked list
+        if (!!left) {
+          left.addToTail(n.value);
+        } else {
+          left = new Node(n.value);
+        }
+      }
+
+      n = n.next;
+  	}
+  	left.concat(right);
+
+  	return left;
   }
 
   print() {
