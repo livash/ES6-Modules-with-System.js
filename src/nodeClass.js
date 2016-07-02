@@ -7,7 +7,7 @@ export class Node {
   addToTail(value) {
     let endNode = new Node(value);
     let n = this;
-    while (n.next !== null) {
+    while (!!n.next) {
       n = n.next;
     }
 
@@ -16,7 +16,7 @@ export class Node {
 
   addNodeToTail(node) {
     let n = this;
-    while (n.next !== null) {
+    while (!!n.next) {
       n = n.next;
     }
       n.next = node;
@@ -26,7 +26,7 @@ export class Node {
   length() {
     let n = this;
     let result = 0;
-    while (n !== null) {
+    while (!!n) {
       result += 1;
       n = n.next;
     }
@@ -38,11 +38,11 @@ export class Node {
   // i.e. concatenate two lists together
   // for example, list1.concat(list2)
 	concat(node) {
-		let n = this;
-		while(n.next !== null) {
-			n = n.next;
-		}
-		n.next = node;
+    let n = this;
+    while(!!n.next) {
+      n = n.next;
+    }
+    n.next = node;
 	}
 
   /*
@@ -56,7 +56,7 @@ export class Node {
     }
 
     let n = head;
-    while (n.next !== null) {
+    while (!!n.next) {
       if (n.next.value === value) {
         n.next = n.next.next;
         return head;
@@ -69,7 +69,7 @@ export class Node {
     let store = {};
     let previous = null;
     let n = list;
-    while (n !== null) {
+    while (!!n) {
       if (store.hasOwnProperty(n.value)) {
         previous.next = n.next;
       } else {
@@ -114,22 +114,22 @@ export class Node {
     return - the value of the kth element from the end of a list;
   */
   static getValueOfElement(list, k) {
-	let p1 = list;
-	let p2 = list.next;
-	let delta = 1;
+    let p1 = list;
+    let p2 = list.next;
+    let delta = 1;
 
-	// iterate over all elements in a list
-	while (p2 !== null) {
-		if(delta === k) {
-			p1 = p1.next;
-		} else {
-			delta += 1;
-		}
+    // iterate over all elements in a list
+    while (!!p2) {
+      if(delta === k) {
+        p1 = p1.next;
+      } else {
+        delta += 1;
+      }
 
-		p2 = p2.next;
-	}
+      p2 = p2.next;
+    }
 
-	  return (delta === k) ? p1.value : null;
+    return (delta === k) ? p1.value : null;
   }
 
   /*
@@ -139,20 +139,20 @@ export class Node {
             and nodes with value greater than 'x' are on the right of x.
   */
   static parseList(list, x) {
-  	let left, right;
-  	let n = list;
-  	while(n !== null) {
-  		if (n.value > x) {
+    let left, right;
+    let n = list;
+    while(!!n) {
+      if (n.value > x) {
         if (!!right) {
           right.addToTail(n.value);
         } else {
           right = new Node(n.value);
         }
-  		} else if (n.value === x) {
-  			let newNode = new Node(x);
-  			newNode.next = right;
-  			right = newNode;
-  		} else { // add elements to the left linked list
+      } else if (n.value === x) {
+        let newNode = new Node(x);
+        newNode.next = right;
+        right = newNode;
+      } else { // add elements to the left linked list
         if (!!left) {
           left.addToTail(n.value);
         } else {
@@ -161,16 +161,16 @@ export class Node {
       }
 
       n = n.next;
-  	}
-  	left.concat(right);
+    }
+    left.concat(right);
 
-  	return left;
+    return left;
   }
 
   print() {
     let n = this;
     let result = "";
-    while(n.next !== null) {
+    while(!!n.next) {
       result += n.value + "  >  ";
       n = n.next;
     }
