@@ -14,6 +14,14 @@ export class Node {
     n.next = endNode;
   }
 
+  addNodeToTail(node) {
+    let n = this;
+    while (n.next !== null) {
+      n = n.next;
+    }
+    n.next = node;
+  }
+
   print() {
     let n = this;
     let result = "";
@@ -21,7 +29,7 @@ export class Node {
       result += n.value + "  >  ";
       n = n.next;
     }
-
+    result += n.value;
     console.log(result);
   }
 }
