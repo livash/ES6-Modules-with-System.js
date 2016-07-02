@@ -19,6 +19,7 @@ for (let i = 2; i < 13; i++) {
 
 let newNode = new Node(20);
 list.addNodeToTail(newNode);
+Node.deleteNode(list, 10);
 
 list.print();
 
