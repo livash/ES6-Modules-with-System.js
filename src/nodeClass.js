@@ -22,6 +22,18 @@ export class Node {
       n.next = node;
   }
 
+  // return the length of linked list
+  length() {
+    let n = this;
+    let result = 0;
+    while (n !== null) {
+      result += 1;
+      n = n.next;
+    }
+
+    return result;
+  }
+
   /*
   @param head - first node in the linked list
   @param value - value of the node which needs to be removed
@@ -74,6 +86,30 @@ export class Node {
     list1.addNodeToTail(list2);
 
     return list1;
+  }
+
+  /*
+    @param list - linked list, pointer to the head of a list
+    @param k - the kth element from the end of the list
+    return - the value of the kth element from the end of a list;
+  */
+  static getValueOfElement(list, k) {
+	let p1 = list;
+	let p2 = list.next;
+	let delta = 1;
+
+	// iterate over all elements in a list
+	while (p2 !== null) {
+		if(delta === k) {
+			p1 = p1.next;
+		} else {
+			delta += 1;
+		}
+
+		p2 = p2.next;
+	}
+
+	  return (delta === k) ? p1.value : null;
   }
 
   print() {
