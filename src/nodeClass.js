@@ -19,7 +19,7 @@ export class Node {
     while (n.next !== null) {
       n = n.next;
     }
-    n.next = node;
+      n.next = node;
   }
 
   /*
@@ -40,6 +40,40 @@ export class Node {
       }
       n = n.next;
     }
+  }
+
+  static removeDups(list) {
+    let store = {};
+    let previous = null;
+    let n = list;
+    while (n !== null) {
+      if (store.hasOwnProperty(n.value)) {
+        previous.next = n.next;
+      } else {
+        store[n.value] = 1;
+        previous = n;
+      }
+      n = n.next;
+    }
+
+	  return list;
+  }
+
+  static makeListOf(numElements) {
+    let list = new Node(0);
+    for (let i = 1; i < numElements; i++) {
+      list.addToTail(i);
+    }
+
+    return list;
+  }
+
+  static makeListWithDups() {
+    let list1 = Node.makeListOf(5);
+    let list2 = Node.makeListOf(5);
+    list1.addNodeToTail(list2);
+
+    return list1;
   }
 
   print() {

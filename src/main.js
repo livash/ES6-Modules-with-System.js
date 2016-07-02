@@ -22,3 +22,14 @@ list.addNodeToTail(newNode);
 //Node.deleteNode(list, 10);
 
 list.print();
+
+console.log("-------------");
+
+let listOfDups = Node.makeListWithDups();
+listOfDups.print();
+
+console.log("+++++++++++++");
+Node.removeDups(listOfDups);
+listOfDups.print();
+
+console.log("--------------");
