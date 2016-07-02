@@ -28,11 +28,11 @@ export class Node {
   return - first element of the linked list
   */
   static deleteNode(head, value) {
-    var n = head;
-    if (n.value === value) {
+    if (head.value === value) {
       return head.next;
     }
 
+    let n = head;
     while (n.next !== null) {
       if (n.next.value === value) {
         n.next = n.next.next;
