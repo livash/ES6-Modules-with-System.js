@@ -21,6 +21,7 @@ export class Stack {
   }
 
   print() {
-    this.top.print();
+    if (!!this.top) this.top.print();
+    else console.log("Stack is empty");
   }
 }

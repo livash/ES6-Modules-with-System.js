@@ -33,6 +33,7 @@ export class Queue {
   }
 
   print() {
-    this.first.print();
+    if (!!this.first) this.first.print();
+    else console.log("Queue is empty");
   }
 }
