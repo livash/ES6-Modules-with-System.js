@@ -4,17 +4,12 @@ import { Node } from "./nodeClass.js";
 import { Stack } from "./stack.js";
 import { StackWithMin } from "./minStack.js";
 import { SetOfStacks } from "./setOfStacks.js";
-
-//var math = new Math();
-
-console.log("2π = " + math.sum(math.pi, math.pi));
-
-// console.log('Hello');
-// let dave = new Animal('Dave');
-// console.log(dave);
-// dave.sayHello();
+import { uniqueChars, hasAllUniqueChars } from "./strings.js";
 
 console.log("---------------");
+console.log(uniqueChars("Hello"));
+console.log(hasAllUniqueChars("hello"));
+console.log(hasAllUniqueChars("elo"));
 
 let s = new SetOfStacks();
 for (let i = 1; i <= 10; i++) {
