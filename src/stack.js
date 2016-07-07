@@ -3,14 +3,14 @@ import { Node } from "./nodeClass.js";
 export class Stack {
   constructor() {
     this.top = null;
-    this.size = 0;
+    this.length = 0;
   }
 
   push(value) {
     let node = new Node(value);
     node.next = this.top : null;
     this.top = node;
-    this.size += 1;
+    this.length += 1;
 
     return this;
   }
@@ -18,13 +18,13 @@ export class Stack {
   pop() {
     let result = this.top.value;
     this.top = this.top.next;
-    this.size -= 1;
+    this.length -= 1;
 
     return result;
   }
 
-  getSize() {
-    return this.size;
+  get size() {
+    return this.length;
   }
 
   print() {

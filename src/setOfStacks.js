@@ -17,7 +17,7 @@ export class SetOfStacks {
 
   push(value) {
     let lastStack = this.lastSubStack();
-    if (lastStack.getSize() < SIZE) {
+    if (lastStack.size < SIZE) {
       lastStack.push(value);
     } else {
       let newStack = new Stack();
@@ -29,9 +29,9 @@ export class SetOfStacks {
   pop() {
     let result;
     let lastStack = this.lastSubStack();
-    if (lastStack.getSize() === 0) {
+    if (lastStack.size === 0) {
       result = null;
-    } else if (lastStack.getSize() === 1) {
+    } else if (lastStack.size === 1) {
       result = lastStack.pop();
       this.stacksArray.pop();
     } else {
