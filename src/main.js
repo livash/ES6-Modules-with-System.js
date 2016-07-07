@@ -3,6 +3,7 @@ import * as math from "./math.js";
 import { Node } from "./nodeClass.js";
 import { Stack } from "./stack.js";
 import { StackWithMin } from "./minStack.js";
+import { SetOfStacks } from "./setOfStacks.js";
 
 //var math = new Math();
 
@@ -15,31 +16,13 @@ console.log("2π = " + math.sum(math.pi, math.pi));
 
 console.log("---------------");
 
-let stack = new StackWithMin();
-stack.push(10);
-stack.push(3);
-stack.push(5);
-stack.push(1);
+let s = new SetOfStacks();
+for (let i = 1; i <= 10; i++) {
+  s.push(i);
+}
 
-stack.print();
-console.log(stack.min);
+s.print();
+s.pop();
+s.pop();
 
-console.log("========");
-stack.pop();
-stack.print();
-console.log(stack.min);
-
-console.log("========");
-stack.pop();
-stack.print();
-console.log(stack.min);
-
-console.log("========");
-stack.pop();
-stack.print();
-console.log(stack.min);
-
-console.log("========");
-stack.pop();
-stack.print();
-console.log(stack.min);
+s.print();

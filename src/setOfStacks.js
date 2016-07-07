@@ -1,10 +1,10 @@
 import { Stack } from './stack.js';
-const SIZE = 5; // size of a stack in a stacks array
+const SIZE = 3; // size of a stack in a stacks array
 
 export class SetOfStacks {
   constructor() {
-    this.stacksArray = [];
-    this.stacksArray.push(new Stack());
+    let emptyStack = new Stack();
+    this.stacksArray = [emptyStack];
   }
 
   size() {
@@ -17,7 +17,7 @@ export class SetOfStacks {
 
   push(value) {
     let lastStack = this.lastSubStack();
-    if (lastStack.length < SIZE) {
+    if (lastStack.getSize() < SIZE) {
       lastStack.push(value);
     } else {
       let newStack = new Stack();
@@ -29,15 +29,23 @@ export class SetOfStacks {
   pop() {
     let result;
     let lastStack = this.lastSubStack();
-    if (lastStack.length === 0) {
+    if (lastStack.getSize() === 0) {
       result = null;
-    } else if (lastStack.length === 1) {
+    } else if (lastStack.getSize() === 1) {
       result = lastStack.pop();
-      lastStack = undefined;
+      this.stacksArray.pop();
     } else {
       result = lastStack.pop();
     }
 
     return result;
+  }
+
+  print () {
+    console.log("------------ Stack of Stacks ------ ");
+    for (let subStack of this.stacksArray) {
+      subStack.print();
+    }
+    console.log("------------");
   }
 }
