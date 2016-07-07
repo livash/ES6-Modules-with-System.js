@@ -22,4 +22,17 @@ let hasAllUniqueChars = (str) => {
   return str.length === uniqueLength;
 }
 
-export { uniqueChars, hasAllUniqueChars };
+let arePermutation = (str1, str2) {
+  if (str1.length != str2.length) return false;
+
+  let hash1 = uniqueChars(str1);
+  let hash2 = uniqueChars(str2);
+
+  for (let key in hash1) {
+    if (!hash2.hasOwnProperty(key)) return false;
+  }
+
+  return true;
+}
+
+export { uniqueChars, hasAllUniqueChars, arePermutation };

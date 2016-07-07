@@ -4,12 +4,12 @@ import { Node } from "./nodeClass.js";
 import { Stack } from "./stack.js";
 import { StackWithMin } from "./minStack.js";
 import { SetOfStacks } from "./setOfStacks.js";
-import { uniqueChars, hasAllUniqueChars } from "./strings.js";
+import { uniqueChars, hasAllUniqueChars, arePermutation } from "./strings.js";
 
 console.log("---------------");
-console.log(uniqueChars("Hello"));
-console.log(hasAllUniqueChars("hello"));
-console.log(hasAllUniqueChars("elo"));
+
+console.log(arePermutation("hello", "olleh"));
+console.log(arePermutation("a", "b"));
 
 let s = new SetOfStacks();
 for (let i = 1; i <= 10; i++) {
