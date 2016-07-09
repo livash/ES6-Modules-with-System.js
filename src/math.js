@@ -43,4 +43,51 @@ function getFibonacci(idx) {
   return getFibonacci(idx - 1) + getFibonacci(idx - 2);
 }
 
-export {sum, pi, fibonacci, getFibonacci}
+/*
+  "Look-and-say" Sequence
+  https://en.wikipedia.org/wiki/Look-and-say_sequence
+
+  Example of the first 10 elements for this sequence:
+
+  ["1", "11", "21", "1211", "111221", "312211", "13112221", "1113213211", "31131211131221", "13211311123113112211"]
+*/
+
+/*
+  @param array - array representing the elements of the Look-and-say sequence
+  @result - next element of the Look-and-say sequence
+*/
+function lookSay(array) {
+  if (array.length === 0) return "1";
+  let lastElement = array[array.length - 1].toString();
+  let result = '';
+
+  // look at the last element count the number of repeating digits from the beginning
+  while (lastElement.length > 0) {
+    let firstChar = lastElement[0];
+    let m = lastElement.match(firstChar + "*")[0].length;
+    result += m + firstChar;
+    lastElement = lastElement.substr(m);
+  }
+
+  return result;
+}
+
+/*
+  @param num - number of elements from a Look-and-say sequence to print out
+  @result - array of numbers
+*/
+
+function lookAndSay(num) {
+  if (typeof num !== 'number') return [];
+  if (num <= 0) return [];
+
+  let result = [];
+  while (num > 0) {
+    result.push(lookSay(result));
+    num -= 1;
+  }
+
+  return result;
+}
+
+export {sum, pi, fibonacci, getFibonacci, lookAndSay}

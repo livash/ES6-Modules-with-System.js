@@ -8,3 +8,4 @@ import { uniqueChars, hasAllUniqueChars, arePermutation } from "./strings.js";
 
 console.log(math.fibonacci(10));
 console.log(math.getFibonacci(10));
+console.log(math.lookAndSay(10));
