@@ -16,8 +16,8 @@ function nextFib(array) {
 }
 
 /*
-  @param num - number of the fibonacci sequence memebers to return
-  @result - array of fibonacci sequence members
+  @param num - number of the Fibonacci sequence memebers to return
+  @result - array of the Fibonacci sequence members
 */
 function fibonacci(num) {
   if (typeof num !== 'number') return [];
@@ -33,14 +33,14 @@ function fibonacci(num) {
 }
 
 /*
-  @param idx - index of the Fibonacci sequence member to be returned
+  @param idx - index of the Fibonacci sequence member to be returned; Note index is '0' based
   @result - number from the Fibonacci sequence
 */
-
 function getFibonacci(idx) {
-  let sequence = fibonacci(idx);
+  if (idx === 0) return 0;
+  if (idx === 1) return 1;
 
-  return sequence[idx - 1];
+  return getFibonacci(idx - 1) + getFibonacci(idx - 2);
 }
 
 export {sum, pi, fibonacci, getFibonacci}
