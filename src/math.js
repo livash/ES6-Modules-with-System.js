@@ -90,4 +90,31 @@ function lookAndSay(num) {
   return result;
 }
 
-export {sum, pi, fibonacci, getFibonacci, lookAndSay}
+function processLookAndSay(element) {
+  let result = '';
+
+  // look at the last element count the number of repeating digits from the beginning
+  while (element.length > 0) {
+    let firstChar = element[0];
+    let m = element.match(firstChar + "*")[0].length;
+    result += m + firstChar;
+    element = element.substr(m);
+  }
+
+  return result;
+}
+
+/*
+  @param num - index of the element in the Look-and-say sequence
+  @result - a string repsesenting the element in the Look-and-say sequence
+*/
+
+function lookAndSayElement(num) {
+  if (typeof num !== 'number') return null;
+  if (num < 0) return null;
+  if (num === 0) return '1';
+
+  return processLookAndSay(lookAndSayElement(num - 1));
+}
+
+export {sum, pi, fibonacci, getFibonacci, lookAndSay, lookAndSayElement}
