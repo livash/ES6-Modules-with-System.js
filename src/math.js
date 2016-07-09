@@ -32,4 +32,15 @@ function fibonacci(num) {
   return result;
 }
 
-export {sum, pi, fibonacci}
+/*
+  @param idx - index of the Fibonacci sequence member to be returned
+  @result - number from the Fibonacci sequence
+*/
+
+function getFibonacci(idx) {
+  let sequence = fibonacci(idx);
+
+  return sequence[idx - 1];
+}
+
+export {sum, pi, fibonacci, getFibonacci}
