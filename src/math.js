@@ -1,9 +1,3 @@
-function sum(x, y) {
-  return x + y;
-}
-
-var pi = 3.141593;
-
 function nextFib(array) {
   if (array.length === 0) return 0;
   if (array.length === 1) return 1;
