@@ -35,4 +35,23 @@ let arePermutation = (str1, str2) {
   return true;
 }
 
-export { uniqueChars, hasAllUniqueChars, arePermutation };
+/*
+  @param str - argument of type string
+  @result - a new string where all " " characters are substituted with "%20"
+*/
+let removeSpaces(str) {
+  let i = 0,
+    result = '';
+  for (let char of str) {
+    if (char === ' ') {
+      result += '%20';
+    } else {
+      result += char;
+    }
+    i++;
+  }
+
+  return result;
+}
+
+export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces };
