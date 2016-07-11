@@ -111,4 +111,4 @@ function lookAndSayElement(num) {
   return processLookAndSay(lookAndSayElement(num - 1));
 }
 
-export {sum, pi, fibonacci, getFibonacci, lookAndSay, lookAndSayElement}
+export { fibonacci, getFibonacci, lookAndSay, lookAndSayElement}
