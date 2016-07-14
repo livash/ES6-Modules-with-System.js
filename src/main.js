@@ -13,3 +13,7 @@ console.log(math.lookAndSayElement(9));
 
 console.log("----------");
 console.log(stringHelper.removeSpaces("hello olena"));
+
+console.log("----------");
+console.log(stringHelper.compressString("aabbbbcc"));
+console.log(stringHelper.compressString("abcde"));

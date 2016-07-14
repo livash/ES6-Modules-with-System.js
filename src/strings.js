@@ -54,4 +54,32 @@ let removeSpaces(str) {
   return result;
 }
 
-export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces };
+/*
+  @param str - argument of type string
+  @result - shortened/compressed string
+
+  Example, "aaaccbbbd" => "a3c2b3d1"
+           "abc" => "abc"
+*/
+let compressString(str) => {
+  if (typeof str !== 'string') return null;
+  if (str.length <= 3) return str;
+
+  let result = '';
+  let i = 0;
+  while (i < str.length) {
+    let char = str[i];
+    let match = str.substring(i).match(char+"+")[0].length;
+    result += char + match;
+    i += match;
+  }
+
+  if (result.length >= str.length){
+    return str;
+  }
+
+  return result;
+}
+
+export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces, compressString };
+
