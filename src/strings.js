@@ -81,5 +81,15 @@ let compressString(str) => {
   return result;
 }
 
+/*
+  @param s1 - string to be compared to
+  @param s2 - string used in comparison
+  @result - is s2 is a substring of s1, return "true"
+*/
+
+let isSubstring(s1, s2) => {
+  return !!(s1.match(s2));
+}
+
 export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces, compressString };
 
