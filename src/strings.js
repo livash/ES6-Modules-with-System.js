@@ -54,4 +54,42 @@ let removeSpaces(str) {
   return result;
 }
 
-export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces };
+/*
+  @param str - argument of type string
+  @result - shortened/compressed string
+
+  Example, "aaaccbbbd" => "a3c2b3d1"
+           "abc" => "abc"
+*/
+let compressString(str) => {
+  if (typeof str !== 'string') return null;
+  if (str.length <= 3) return str;
+
+  let result = '';
+  let i = 0;
+  while (i < str.length) {
+    let char = str[i];
+    let match = str.substring(i).match(char+"+")[0].length;
+    result += char + match;
+    i += match;
+  }
+
+  if (result.length >= str.length){
+    return str;
+  }
+
+  return result;
+}
+
+/*
+  @param s1 - string to be compared to
+  @param s2 - string used in comparison
+  @result - is s2 is a substring of s1, return "true"
+*/
+
+let isSubstring(s1, s2) => {
+  return !!(s1.match(s2));
+}
+
+export { uniqueChars, hasAllUniqueChars, arePermutation, removeSpaces, compressString };
+
