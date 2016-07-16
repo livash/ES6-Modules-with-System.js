@@ -5,7 +5,7 @@
   "main": "config.js",
   "scripts": {
     "start": "node ./server.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node ./node_src"
   },
   "author": "Olena D.",
   "license": "ISC",
