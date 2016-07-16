@@ -11,5 +11,5 @@ describe("summation", function() {
   it("should sum 2 and 2", function() {
     var product = calculator.sum(2,2);
     expect(product).toBe(4);
-  })
-})
+  });
+});
