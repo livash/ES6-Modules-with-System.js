@@ -47,16 +47,36 @@ describe("rotateK method", function() {
   });
 });
 
-describe("findMin method", function() {
-  it("should find min integer in an array", function() {
+describe("binarySeach method for sorted arrays of integers", function() {
+  it("should return an integer, if such integer is present in the input array", function() {
     var arr = [1,2,3];
-    var result = array.findMin(arr);
-    expect(result).toBe(1);
+    var result = array.binarySearch(arr, 3);
+    expect(result).toBe(3);
   });
 
-  it("should find min integer in a rotated array", function() {
-    var arr = [4,5,1,2,3];
-    var result = array.findMin(arr);
-    expect(result).toBe(1);
+  it("should return 'null' if an input array is empty", function() {
+    var arr = [];
+    var result = array.binarySearch(arr, 3);
+    expect(result).toBe(null);
+  });
+
+  it("should return 'null' if the element is not found in the input array", function() {
+    var arr = [1,2,4];
+    var result = array.binarySearch(arr, 6);
+    expect(result).toBe(null);
   });
 });
+
+// describe("findMin method", function() {
+//   it("should find min integer in an array", function() {
+//     var arr = [1,2,3];
+//     var result = array.findMin(arr);
+//     expect(result).toBe(1);
+//   });
+// 
+//   it("should find min integer in a rotated array", function() {
+//     var arr = [4,5,1,2,3];
+//     var result = array.findMin(arr);
+//     expect(result).toBe(1);
+//   });
+// });

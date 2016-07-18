@@ -69,27 +69,55 @@ function returnUnsortedPart(arr) {
   return isSorted(left) ? right : left;
 }
 
-function findMin(arr) {
-  if ( !(arr instanceof Array) ) return null;
+// function findMin(arr) {
+//   if ( !(arr instanceof Array) ) return null;
+//   if (arr.length == 0) return null;
+//   if (arr.length == 1) return arr[0];
+// 
+//   var result = JSON.parse(JSON.stringify(arr));
+//   while(result.length > 2) {
+//     console.log("Result:   ", result);
+//     result = returnUnsortedPart(result);
+//   }
+//   console.log("result: ", result);
+// 
+//   return ( result[0] > result[1] ) ? result[1] : result[0];
+// }
+// 
+// var arr = [4,5,1,2,3];
+// console.log( findMin(arr) );
+
+/*
+  Binary Search method for a sorted array of numbers
+  @param arr - input array of sorted numbers
+  @param value - the value which is being searched in the array
+  @result - null if value is not present in the array,
+            or the value itself if it is present in the array
+*/
+function binarySearch(arr, value) {
+  // array is sorted
+  if (arr.length == 1 && arr[0] === value) return value;
+  if (arr.length == 1 && arr[0] !== value) return null;
   if (arr.length == 0) return null;
-  if (arr.length == 1) return arr[0];
 
-  var result = JSON.parse(JSON.stringify(arr));
-  while(result.length > 2) {
-    console.log("Result:   ", result);
-    result = returnUnsortedPart(result);
+  var result = null,
+      mid = Math.floor(arr.length / 2),
+      left = arr.slice(0, mid); // mid is not included
+      right = arr.slice(mid, arr.length);
+
+  if (arr[mid] > value) {
+    result = binarySearch(left, value);
+  } else if (arr[mid] === value) {
+    return value;
+  } else {
+    result = binarySearch(right, value);
   }
-  console.log("result: ", result);
-
-  return ( result[0] > result[1] ) ? result[1] : result[0];
+  return result;
 }
-
-var arr = [4,5,1,2,3];
-console.log( findMin(arr) );
 
 module.exports = {
   rotate: rotate,
   rotateK: rotateK,
   isSorted: isSorted,
-  findMin: findMin
+  binarySearch: binarySearch
 }
