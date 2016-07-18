@@ -46,3 +46,17 @@ describe("rotateK method", function() {
     expect(result.toString()).toBe([4,5,1,2,3].toString());
   });
 });
+
+describe("findMin method", function() {
+  it("should find min integer in an array", function() {
+    var arr = [1,2,3];
+    var result = array.findMin(arr);
+    expect(result).toBe(1);
+  });
+
+  it("should find min integer in a rotated array", function() {
+    var arr = [4,5,1,2,3];
+    var result = array.findMin(arr);
+    expect(result).toBe(1);
+  });
+});
