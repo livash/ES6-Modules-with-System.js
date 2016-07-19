@@ -51,4 +51,10 @@ describe("Bubble Sort method", function() {
     var result = sort.bubbleSort(arr);
     expect(result.toString()).toBe([-1,0,2,3].toString());
   });
+
+  it("should not modify the input array", function() {
+    var arr = [3,2,1];
+    var result = sort.bubbleSort(arr);
+    expect(arr.toString()).toBe([3,2,1].toString());
+  });
 });
