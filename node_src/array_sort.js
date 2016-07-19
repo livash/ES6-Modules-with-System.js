@@ -57,13 +57,22 @@ var mergeSort = function (arr) {
 /*
   Bubble Sort
 */
-
+/*
+  @param arr - array of numbers
+  @param left - index of an element to be swapped
+  @param right - index of an element to be swapped
+  @result - array "arr" with elements at positions left and right swapped
+*/
 var swap = function(arr, left, right) {
   var temp = arr[left];
   arr[left] = arr[right];
   arr[right] = temp;
 }
 
+/*
+  @param arr - unsorted array of numbers
+  @result - sorted array
+*/
 var bubbleSort = function(arr){
   if ( !(arr instanceof Array) ) return null;
   if (arr.length < 2) return arr;
@@ -84,6 +93,10 @@ var bubbleSort = function(arr){
 
 /*
   Insertion Sort
+*/
+/*
+  @param arr - unsorted array of numbers
+  @result - sorted array
 */
 var insertionSort = function(arr) {
   if (!(arr instanceof Array)) return null;
