@@ -1,4 +1,4 @@
-var sort = require("../merge_sort");
+var sort = require("../array_sort");
 
 describe("merge sort method", function() {
   it("should return an array", function() {
