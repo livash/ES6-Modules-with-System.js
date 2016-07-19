@@ -34,6 +34,7 @@ var merge = function (left, right) {
   @result - sorted array
 */
 var mergeSort = function (arr) {
+  if ( !(arr instanceof Array) ) return null;
   if (arr.length < 2) return arr;
   // sort the array
   var left, right,
@@ -131,7 +132,7 @@ var selectionSort = function(arr) {
   for (var i = 0; i < arr.length; i++) {
     var small = i; // index of the smallest entry found
     for (var k = i+1; k < arr.length; k++) {
-      if (result[small] > result[k]) {
+    if (result[small] > result[k]) {
         small = k;
       }
     }

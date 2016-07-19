@@ -3,6 +3,11 @@ var SORT_ALGS = ["mergeSort", "bubbleSort", "insertionSort", "selectionSort"];
 
 SORT_ALGS.forEach(function(algName) {
   describe(algName, function() {
+    it("should return null if given a non Array input", function() {
+      var result = sort[algName]('some_string');
+      expect(result).toBeNull();
+    });
+
     it("should return an array", function() {
       var arr = [2,3,1];
       var result = sort[algName](arr);
