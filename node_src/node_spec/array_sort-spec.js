@@ -11,7 +11,7 @@ SORT_ALGS.forEach(function(algName) {
     it("should return an array", function() {
       var arr = [2,3,1];
       var result = sort[algName](arr);
-      expect(result instanceof Array).toBe(true);
+      expect(result instanceof Array).toBeTruthy();
     });
 
     it("should return an empty array if given an empty array", function() {
