@@ -1,5 +1,5 @@
 var sort = require("../array_sort");
-var SORT_ALGS = ["mergeSort", 'bubbleSort', 'insertionSort'];
+var SORT_ALGS = ["mergeSort", "bubbleSort", "insertionSort", "selectionSort"];
 
 SORT_ALGS.forEach(function(algName) {
   describe(algName, function() {

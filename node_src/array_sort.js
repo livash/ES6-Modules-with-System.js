@@ -118,8 +118,37 @@ var insertionSort = function(arr) {
   return result;
 };
 
+/*
+  Selection Sort
+*/
+
+var selectionSort = function(arr) {
+  if (!(arr instanceof Array)) return null;
+  if (arr.length < 2) return arr;
+
+  var result = JSON.parse(JSON.stringify(arr));
+
+  for (var i = 0; i < arr.length; i++) {
+    var small = i; // index of the smallest entry found
+    for (var k = i+1; k < arr.length; k++) {
+      if (result[small] > result[k]) {
+        small = k;
+      }
+    }
+    if (small !== i) {
+      swap(result, i, small);
+    }
+  }
+
+  return result;
+};
+
+var arr = [3,2,1];
+console.log("Result: ", selectionSort(arr));
+
 module.exports = {
   mergeSort: mergeSort,
   bubbleSort: bubbleSort,
-  insertionSort: insertionSort
+  insertionSort: insertionSort,
+  selectionSort: selectionSort
 }
