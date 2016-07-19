@@ -1,3 +1,11 @@
+/*
+  Merge Sort
+*/
+/*
+  @param left - array
+  @param right - array
+  @result - merge of right and left array
+*/
 var merge = function (left, right) {
   var result = [];
   while ( (left.length + right.length) > 0 ) {
@@ -21,7 +29,10 @@ var merge = function (left, right) {
   return result;
 };
 
-// sorted array is presented in the ascending order
+/*
+  @param arr - unsorted array
+  @result - sorted array
+*/
 var mergeSort = function (arr) {
   if (arr.length < 2) return arr;
   // sort the array
