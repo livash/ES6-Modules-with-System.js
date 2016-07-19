@@ -58,10 +58,10 @@ var mergeSort = function (arr) {
   Bubble Sort
 */
 
-var swap = function(arr, i, k) {
-  var temp = arr[i];
-  arr[i] = arr[k];
-  arr[k] = temp;
+var swap = function(arr, left, right) {
+  var temp = arr[left];
+  arr[left] = arr[right];
+  arr[right] = temp;
 }
 
 var bubbleSort = function(arr){
@@ -82,7 +82,31 @@ var bubbleSort = function(arr){
   return result;
 };
 
+/*
+  Insertion Sort
+*/
+var insertionSort = function(arr) {
+  if (!(arr instanceof Array)) return null;
+  if (arr.length < 2) return arr;
+
+  var result = JSON.parse(JSON.stringify(arr));
+
+  for (var i = 0; i < result.length - 1; i++) {
+    if (result[i] > result[i + 1]) {
+      swap(result, i, i+1);
+      for (var j = i; j > 0; j--) {
+        if (result[j] < result[j - 1]) {
+          swap(result, j - 1, j);
+        }
+      }
+    }
+  }
+
+  return result;
+};
+
 module.exports = {
   mergeSort: mergeSort,
-  bubbleSort: bubbleSort
+  bubbleSort: bubbleSort,
+  insertionSort: insertionSort
 }

@@ -58,3 +58,11 @@ describe("Bubble Sort method", function() {
     expect(arr.toString()).toBe([3,2,1].toString());
   });
 });
+
+describe("Insertion Sort", function() {
+  it("should sort an array", function() {
+    var arr = [4,3,2,1];
+    var result = sort.insertionSort(arr);
+    expect(result.toString()).toBe([1,2,3,4].toString());
+  });
+});
