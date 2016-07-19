@@ -52,8 +52,37 @@ var mergeSort = function (arr) {
   var result = merge(left, right);
 
   return result;
+};
+
+/*
+  Bubble Sort
+*/
+
+var swap = function(arr, i, k) {
+  var temp = arr[i];
+  arr[i] = arr[k];
+  arr[k] = temp;
 }
 
+var bubbleSort = function(arr){
+  if ( !(arr instanceof Array) ) return null;
+  if (arr.length < 2) return arr;
+  var result = JSON.parse(JSON.stringify(arr));
+  var j = 1;
+
+  while(j < result.length) {
+    for (var i = 0; i < arr.length - j; i++) {
+      if(result[i] > result[i + 1]) {
+        swap(result, i, i+1);
+      }
+    }
+    j++;
+  }
+
+  return result;
+};
+
 module.exports = {
-  mergeSort: mergeSort
+  mergeSort: mergeSort,
+  bubbleSort: bubbleSort
 }
