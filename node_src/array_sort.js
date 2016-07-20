@@ -144,9 +144,6 @@ var selectionSort = function(arr) {
   return result;
 };
 
-var arr = [3,2,1];
-console.log("Result: ", selectionSort(arr));
-
 module.exports = {
   mergeSort: mergeSort,
   bubbleSort: bubbleSort,
