@@ -2,9 +2,11 @@
   Bucket sort
 
   @param arr - input array of integers
-  @param min - minmal value in the array
-  @param max - value in the array
-  @param buckets - number of buckets to sort the data into
+  @param options = {
+                  min: minimal value in the array,
+                  max: max value in the array,
+                  buckets: number of buckets to sort the data into
+                }
 
   @result - object where key value pairs correspond to the bucket number and all elements in the bucket
 
@@ -15,7 +17,10 @@
       ...
   }
 */
-var sort = function(arr, min, max, buckets) {
+var sort = function(arr, options) {
+  var min = options.min,
+      max = options.max,
+      buckets = options.buckets;
   if ( !(arr instanceof Array)) return null;
   if (typeof min !== 'number' || typeof max !== 'number' || typeof buckets !== 'number') {
     return null;
