@@ -16,18 +16,19 @@
   }
 */
 var sort = function(arr, min, max, buckets) {
+  // TODO: add cjecks on input arguments
   var result = {};
   var delta = Math.ceil( (max - min) / buckets);
 
   for (var i = 0; i < arr.length; i++) {
-    var bucket = arr[i] % delta;
+    var bucket = Math.floor(arr[i] / delta);
     addToBucket(result, bucket, arr[i]);
   }
 
   return result;
 }
 
-function addToBucket(buckets, bicketId, item) {
+function addToBucket(buckets, bucketId, item) {
   if (buckets.hasOwnProperty(bucketId)) {
     buckets[bucketId].push(item);
   } else {
@@ -37,7 +38,7 @@ function addToBucket(buckets, bicketId, item) {
 
 var printBuckets = function(buckets) {
   for (var prop in buckets) {
-    console.log(buckets[prop].toString());
+    console.log(prop, buckets[prop].toString());
   }
 }
 
