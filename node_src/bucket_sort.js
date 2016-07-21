@@ -16,7 +16,10 @@
   }
 */
 var sort = function(arr, min, max, buckets) {
-  // TODO: add cjecks on input arguments
+  if ( !(arr instanceof Array)) return null;
+  if (typeof min !== 'number' || typeof max !== 'number' || typeof buckets !== 'number') {
+    return null;
+  }
   var result = {};
   var delta = Math.ceil( (max - min) / buckets);
 

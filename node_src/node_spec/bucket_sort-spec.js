@@ -22,7 +22,26 @@ describe("Bucket Sort method", function() {
     for (var prop in result) {
       length++;
     }
-    bucketSort.printBuckets(result);
+
     expect(length <= buckets).toBeTruthy();
+  });
+
+  it("return null result if the input argument for the array is not an array", function() {
+    var arr = "this is not an array",
+        min = 0,
+        max = 1000,
+        buckets = 10;
+    var result = bucketSort.sort(arr, min, max, buckets);
+    expect(result).toBeNull();
+  });
+
+  it ("returns null if other input arguments are not of type number", function() {
+    var arr = [1, 1, 1,3,10, 120, 1000],
+        min = "min",
+        max = "1000",
+        buckets = "10";
+
+    var result = bucketSort.sort(arr, min, max, buckets);
+    expect(result).toBeNull();
   });
 });
