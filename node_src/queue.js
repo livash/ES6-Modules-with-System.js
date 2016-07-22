@@ -9,8 +9,16 @@ function Queue() {
 }
 
 // add element as the last element to a queue
-Queue.prototype.enqueu = function(val) {
-  
+Queue.prototype.enqueue = function(val) {
+  var newNode = new QNode(null, val);
+  if (this.first === null) {
+    this.first = newNode;
+    this.first = this.last;
+  } else {
+    var temp = this.last;
+    this.last = newNode;
+    temp.next = newNode;
+  }
 }
 
 // remove the first element in the queue
