@@ -18,7 +18,19 @@ describe("Queue", function() {
     var q = new Q.Queue();
     q.enqueue("A");
     q.enqueue("B");
+    q.enqueue("C");
     expect(q.first.val).toBe("A");
-    expect(q.last.val).toBe("B");
+    expect(q.last.val).toBe("C");
+  });
+
+  it("should be able to remove elements from the queue", function() {
+    var q = new Q.Queue();
+    q.enqueue("A");
+    q.enqueue("B");
+    q.enqueue("C");
+    var result = q.dequeue(); // "A" should be the first element to be dequeued
+    expect(q.first.val).toBe("B");
+    expect(q.last.val).toBe("C");
+    expect(result).toBe("A");
   });
 });
