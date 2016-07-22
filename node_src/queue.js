@@ -38,14 +38,15 @@ Queue.prototype.dequeue = function() {
   return result;
 }
 
-Queue.prototype.print = function() {
+Queue.prototype.toString = function() {
   var node = this.first;
   var result = "";
   while (node !== null) {
     result += node.val + " < ";
     node = node.next;
   }
-  console.log(result);
+
+  return result;
 }
 
 Queue.prototype.isSorted = function() {
@@ -65,7 +66,7 @@ Queue.prototype.isSorted = function() {
 // q.enqueue(2);
 // q.enqueue(3);
 // console.log(q);
-// q.print();
+// console.log(q.toString());
 // console.log(q.dequeue());
 // q.print();
 

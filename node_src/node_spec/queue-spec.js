@@ -33,4 +33,12 @@ describe("Queue", function() {
     expect(q.last.val).toBe("C");
     expect(result).toBe("A");
   });
+
+  it("should print out the elements in the queue", function() {
+    var q = new Q.Queue();
+    q.enqueue("A");
+    q.enqueue("B");
+    q.enqueue("C");
+    expect(q.toString()).toBe("A < B < C < ");
+  });
 });
