@@ -75,7 +75,7 @@ BST.prototype.searchAt = function(node, val) {
 }
 
 /*
-  Find the smalest value in the BST
+  Find the node with the smalest value in the BST
 */
 BST.prototype.min = function() {
   if (this.root === null) return null;
@@ -84,14 +84,14 @@ BST.prototype.min = function() {
 
 BST.prototype.findMin = function(node) {
   if (node.left === null) {
-    return node.val;
+    return node;
   } else {
     return this.findMin(node.left);
   }
 }
 
 /*
-  Find the largest value in the BST
+  Find the node with the largest value in the BST
 */
 BST.prototype.max = function() {
   if (this.root === null) return null;
@@ -100,9 +100,46 @@ BST.prototype.max = function() {
 
 BST.prototype.findMax = function(node) {
   if (node.right === null) {
-    return node.val;
+    return node;
   } else {
     return this.findMax(node.right);
+  }
+}
+
+BST.prototype.deleteMin = function() {
+  var parentOfMin = function(node) {
+    if (node.left.left === null) {
+      return node;
+    } else {
+      return parentOfMin(node.left);
+    }
+  }
+
+  if (this.root === null) return;
+  if (this.root.left === null) {
+    // make root.right as a new root;
+    this.root = root.right;
+  } else {
+    var parent = parentOfMin(this.root);
+    parent.left = null;
+  }
+}
+
+BST.prototype.deleteMax = function() {
+  var parentOfMax = function(node) {
+    if (node.right.right === null) {
+      return node;
+    } else {
+      return parentOfMax(node.right);
+    }
+  }
+
+  if (this.root === null) return;
+  if (this.root.right === null) {
+    this.root = this.root.left;
+  } else {
+    var parent = parentOfMax(this.root);
+    parent.right = null;
   }
 }
 

@@ -83,7 +83,7 @@ describe("Binary Tree", function() {
   });
 
   describe("BST.min method", function() {
-    it("should have a method to find minimum value in a tree", function() {
+    it("should have a method to find a node with the smallest value in a tree", function() {
       var tree = new BST.BST();
       expect(typeof tree.min).toBe('function');
     });
@@ -101,7 +101,7 @@ describe("Binary Tree", function() {
           .add(10)
           .add(1);
       var result = tree.min();
-      expect(result).toBe(1);
+      expect(result.val).toBe(1);
     });
   });
 
@@ -116,7 +116,7 @@ describe("Binary Tree", function() {
       expect(tree.max()).toBeNull();
     });
 
-    it("should return the largest element in a BST", function() {
+    it("should return the node with the largest value in a BST", function() {
       var tree = new BST.BST();
       tree.add(100)
           .add(200)
@@ -124,7 +124,35 @@ describe("Binary Tree", function() {
           .add(10)
           .add(1);
       var result = tree.max();
-      expect(result).toBe(200);
+      expect(result.val).toBe(200);
+    });
+  });
+
+  describe("BST.deleteMin and BST.deleteMax", function() {
+    ["deleteMin", "deleteMax"].forEach(function(method) {
+      it("should be a funciton", function() {
+        var tree = new BST.BST();
+        expect(typeof tree[method]).toBe('function');
+      });
+
+      it("should delete the smallest number in a tree", function() {
+        // Arrange
+        var tree = new BST.BST();
+        tree.add(100)
+            .add(200)
+            .add(99)
+            .add(88)
+            .add(1);
+        var beforeDelete = tree.toString();
+
+        // Act
+        tree[method]();
+        var afterDelete = tree.toString();
+
+        //Assert
+        expect(beforeDelete !== afterDelete).toBeTruthy();
+
+      });
     });
   });
 });
