@@ -55,8 +55,12 @@ BT.prototype.isBST = function() {
   return q.isSorted();
 }
 
-var tree = new BT();
-tree.add(100);
-tree.add(98);
-tree.add(102);
-console.log(tree);
+// var tree = new BT();
+// tree.add(100);
+// tree.add(98);
+// tree.add(102);
+// console.log(tree);
+
+module.exports = {
+    BT:BT
+}
