@@ -21,6 +21,16 @@ describe("Binary Tree", function() {
     expect(tree.root.right.val).toBe(103);
   });
 
+  it("should be a Binary Search Tree, with nodes which are larger than root on the right and nodes which are equal or less than root on the lft", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(100);
+    tree.add(105);
+    expect(tree.root.val).toBe(100);
+    expect(tree.root.left.val).toBe(100);
+    expect(tree.root.right.val).toBe(105);
+  });
+
   it("should create a binary search tree", function() {
     var tree = new BT.BT();
     tree.add(100);

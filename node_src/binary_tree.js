@@ -20,7 +20,7 @@ BT.prototype.add = function(val) {
 }
 
 BT.prototype.addNode = function(target, val) {
-  if (target.val < val) {
+  if (target.val <= val) {
     // insert on the right
     if (target.right === null) {
       var newNode = new BTNode(val);
