@@ -29,4 +29,18 @@ describe("Binary Tree", function() {
     var result = tree.isBST();
     expect(result).toBeTruthy();
   });
+
+  it("should have a toString method", function() {
+    var tree = new BT.BT();
+    expect(typeof tree.toString).toBe('function');
+  });
+
+  it("should return correct toString() result", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(103);
+    tree.add(95);
+    var result = tree.toString();
+    expect(result).toBe("95 < 100 < 103 < ");
+  });
 });

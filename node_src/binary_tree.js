@@ -55,6 +55,19 @@ BT.prototype.isBST = function() {
   return q.isSorted();
 }
 
+BT.prototype.toString = function() {
+  var q = new Queue.Queue();
+  var inOrder = function(node) {
+    if (node.left !== null) { inOrder(node.left); }
+    q.enqueue(node.val);
+    if (node.right !== null) { inOrder(node.right); }
+  }
+
+  // assemble a queue for the in-order traversal of a tree
+  inOrder(this.root);
+  return q.toString();
+}
+
 // var tree = new BT();
 // tree.add(100);
 // tree.add(98);
