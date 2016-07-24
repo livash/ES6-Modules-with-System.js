@@ -1,4 +1,4 @@
-var BT = require('../binary_tree');
+var BT = require('../binary_search_tree');
 
 describe("Binary Tree", function() {
   it("should create a tree with a property root", function() {
