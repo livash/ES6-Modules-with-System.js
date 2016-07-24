@@ -24,6 +24,8 @@ BST.prototype.add = function(val) {
   } else {
     this.addNode(this.root, val);
   }
+
+  return this;
 }
 
 /*
@@ -70,6 +72,21 @@ BST.prototype.searchAt = function(node, val) {
     return this.searchAt(node.left, val);
   } else {
     return this.searchAt(node.right, val);
+  }
+}
+
+/*
+  Find the smalest value in the BST
+*/
+BST.prototype.min = function() {
+  return this.findMin(this.root);
+}
+
+BST.prototype.findMin = function(node) {
+  if (node.left === null) {
+    return node.val;
+  } else {
+    return this.findMin(node.left);
   }
 }
 

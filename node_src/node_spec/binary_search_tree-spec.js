@@ -81,4 +81,22 @@ describe("Binary Tree", function() {
     var result = tree.toString();
     expect(result).toBe("95 < 100 < 103 < ");
   });
+
+  describe("BST.min method", function() {
+    it("should have a method to find minimum value in a tree", function() {
+      var tree = new BST.BST();
+      expect(typeof tree.min).toBe('function');
+    });
+
+    it("should return minimum element in a BST", function() {
+      var tree = new BST.BST();
+      tree.add(100)
+          .add(200)
+          .add(99)
+          .add(10)
+          .add(1);
+      var result = tree.min();
+      expect(result).toBe(1);
+    });
+  });
 });
