@@ -45,7 +45,7 @@ BT.prototype.isBST = function() {
   var q = new Queue.Queue();
   var inOrder = function(node) {
     if (node.left !== null) { inOrder(node.left); }
-    q.enqueue(node);
+    q.enqueue(node.val);
     if (node.right !== null) { inOrder(node.right); }
   }
 

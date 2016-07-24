@@ -20,4 +20,13 @@ describe("Binary Tree", function() {
     expect(tree.root.left.val).toBe(95);
     expect(tree.root.right.val).toBe(103);
   });
+
+  it("should create a binary search tree", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(103);
+    tree.add(95);
+    var result = tree.isBST();
+    expect(result).toBeTruthy();
+  });
 });
