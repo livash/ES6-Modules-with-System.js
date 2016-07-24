@@ -40,6 +40,34 @@ describe("Binary Tree", function() {
     expect(result).toBeTruthy();
   });
 
+  it("should have a search and searchAt methods", function() {
+    var tree = new BT.BT();
+    expect(typeof tree.search).toBe('function');
+    expect(typeof tree.searchAt).toBe('function');
+  });
+
+  it("should search a tree for a node with value and return a node object if it's present in a tree", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(200);
+    tree.add(99);
+    tree.add(201);
+    tree.add(2003);
+    var result = tree.search(201);
+    expect(result).toBeTruthy();
+  });
+
+  it("should search a tree for a value and if not found it returns null", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(200);
+    tree.add(99);
+    tree.add(201);
+    tree.add(2003);
+    var result = tree.search(1000);
+    expect(result).toBeNull();
+  });
+
   it("should have a toString method", function() {
     var tree = new BT.BT();
     expect(typeof tree.toString).toBe('function');

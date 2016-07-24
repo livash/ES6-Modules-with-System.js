@@ -33,7 +33,7 @@ BT.prototype.add = function(val) {
   BST with a root at the "target" node
 */
 BT.prototype.addNode = function(target, val) {
-  if (target.val <= val) {
+  if (target.val < val) {
     // insert on the right
     if (target.right === null) {
       var newNode = new BTNode(val);
@@ -50,6 +50,29 @@ BT.prototype.addNode = function(target, val) {
     }
   }
 }
+
+/*
+  Search for a value in a Binary Search Tree
+  @param val - interger value for which we are searching the tree
+  @result node - BTNode object that has key value of 'val'
+*/
+BT.prototype.search = function(val) {
+  var result = this.searchAt(this.root, val);
+  return result;
+}
+
+BT.prototype.searchAt = function(node, val) {
+  if (node === null) return null;
+  if (node.val === val) {
+    return node;
+  }
+  if (node.val > val) {
+    return this.searchAt(node.left, val);
+  } else {
+    return this.searchAt(node.right, val);
+  }
+}
+
 /*
   This method cheks whether a tree is a Binary Search Tree
   @result - return a boolean. True if the binary tree is a binary search tree
