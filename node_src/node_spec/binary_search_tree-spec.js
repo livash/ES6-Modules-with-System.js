@@ -88,6 +88,11 @@ describe("Binary Tree", function() {
       expect(typeof tree.min).toBe('function');
     });
 
+    it("should return null if the tree has no nodes", function() {
+      var tree = new BST.BST();
+      expect(tree.max()).toBeNull();
+    });
+
     it("should return minimum element in a BST", function() {
       var tree = new BST.BST();
       tree.add(100)
@@ -97,6 +102,29 @@ describe("Binary Tree", function() {
           .add(1);
       var result = tree.min();
       expect(result).toBe(1);
+    });
+  });
+
+  describe("BST.max method", function() {
+    it("should be a function", function() {
+      var tree = new BST.BST();
+      expect(typeof tree.max).toBe('function');
+    });
+
+    it("should return null if the tree has no nodes", function() {
+      var tree = new BST.BST();
+      expect(tree.max()).toBeNull();
+    });
+
+    it("should return the largest element in a BST", function() {
+      var tree = new BST.BST();
+      tree.add(100)
+          .add(200)
+          .add(99)
+          .add(10)
+          .add(1);
+      var result = tree.max();
+      expect(result).toBe(200);
     });
   });
 });

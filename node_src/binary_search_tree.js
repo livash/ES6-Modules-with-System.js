@@ -59,8 +59,7 @@ BST.prototype.addNode = function(target, val) {
   @result node - BSTNode object that has key value of 'val'
 */
 BST.prototype.search = function(val) {
-  var result = this.searchAt(this.root, val);
-  return result;
+  return this.searchAt(this.root, val);
 }
 
 BST.prototype.searchAt = function(node, val) {
@@ -79,6 +78,7 @@ BST.prototype.searchAt = function(node, val) {
   Find the smalest value in the BST
 */
 BST.prototype.min = function() {
+  if (this.root === null) return null;
   return this.findMin(this.root);
 }
 
@@ -87,6 +87,22 @@ BST.prototype.findMin = function(node) {
     return node.val;
   } else {
     return this.findMin(node.left);
+  }
+}
+
+/*
+  Find the largest value in the BST
+*/
+BST.prototype.max = function() {
+  if (this.root === null) return null;
+  return this.findMax(this.root);
+}
+
+BST.prototype.findMax = function(node) {
+  if (node.right === null) {
+    return node.val;
+  } else {
+    return this.findMax(node.right);
   }
 }
 
