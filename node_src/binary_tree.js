@@ -1,5 +1,8 @@
 var Queue = require('./queue');
 
+/*
+  Binary Tree node.
+*/
 function BTNode(val) {
   this.val = val;
   this.left = null;
@@ -11,6 +14,10 @@ function BT() {
   this.root = null;
 }
 
+/*
+  @param val - integer
+  This method adds a notde with a "val" to a tree
+*/
 BT.prototype.add = function(val) {
   if (this.root === null) {
     this.root = new BTNode(val);
@@ -19,6 +26,12 @@ BT.prototype.add = function(val) {
   }
 }
 
+/*
+  @param target - BTNode object
+  @param val - integer to be added to a tree as a new node
+  This method adds a new node with a value 'val' to a 
+  BST with a root at the "target" node
+*/
 BT.prototype.addNode = function(target, val) {
   if (target.val <= val) {
     // insert on the right
@@ -38,7 +51,8 @@ BT.prototype.addNode = function(target, val) {
   }
 }
 /*
-   @result - return a boolean. True if the binary tree is a binary search tree
+  This method cheks whether a tree is a Binary Search Tree
+  @result - return a boolean. True if the binary tree is a binary search tree
 */
 BT.prototype.isBST = function() {
   // create a queue of "in-order" traversal of the tree
