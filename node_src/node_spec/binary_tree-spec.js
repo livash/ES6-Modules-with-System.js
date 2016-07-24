@@ -11,4 +11,13 @@ describe("Binary Tree", function() {
     tree.add(100);
     expect(tree.root.val).toBe(100);
   });
+
+  it("should be able to add multiple values", function() {
+    var tree = new BT.BT();
+    tree.add(100);
+    tree.add(103);
+    tree.add(95);
+    expect(tree.root.left.val).toBe(95);
+    expect(tree.root.right.val).toBe(103);
+  });
 });
