@@ -46,6 +46,30 @@ MaxHeap.prototype.swap = function(i, j) { // one-based indexes "i" and "j"
   this.array[j - 1] = temp;
 };
 
+MaxHeap.prototype.removeMax = function() {
+  var first = this.array[0],
+      last = this.array[this.array.length - 1];
+  this.array.shift();
+  this.array.pop();
+  this.array.unshift(last);
+  this.bubbleDown(1);
+
+  return first;
+}
+
+MaxHeap.prototype.bubbleDown = function(parentIndex) { // one-based index
+  // var parentVal = this.array[parentIndex - 1],
+  //     leftChildIndex = this.getLeftChildIndex(parentIndex),
+  //     rightChildIndex = this.getRightChildIndex(parentIndex),
+  //     leftChildVal = this.getValue(leftChildIndex),
+  //     rightChildVal = this.getValue(rightChildIndex);
+  //
+  // if (parentVal < rightChildVal && parentVal < leftChildVal) {
+  //   // TODO finish this
+  // }
+
+}
+
 module.exports = {
   MaxHeap: MaxHeap
 }
