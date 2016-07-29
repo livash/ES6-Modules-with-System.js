@@ -18,4 +18,12 @@ describe("Max Heap", function() {
         .add(88);
     expect(heap.array.length === 3).toBeTruthy();
   });
+
+  it('should retturn the correct value for the max number inserted into the heap', function() {
+    var heap = new MH.MaxHeap();
+    heap.add(10)
+        .add(20)
+        .add(30);
+      expect(heap.getMax()).toBe(30);
+  });
 });
