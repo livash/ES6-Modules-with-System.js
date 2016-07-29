@@ -11,7 +11,7 @@ MaxHeap.prototype.add = function(val) {
     throw "Invalid data for the Max Heap";
   }
   this.array.push(val);
-  this.bubbleUp(this.array.length - 1, val);
+  this.bubbleUp(this.array.length, val);
 
   return this;
 };
@@ -47,7 +47,7 @@ MaxHeap.prototype.swap = function(i, j) { // one-based indexes "i" and "j"
 };
 
 MaxHeap.prototype.removeMax = function() {
-  var first = this.array.shift();,
+  var first = this.array.shift();
       last = this.array.pop();
   this.array.unshift(last);
   this.bubbleDown(1);
@@ -74,6 +74,10 @@ MaxHeap.prototype.getLeftChildIndex = function(position) {
 
 MaxHeap.prototype.getRightChildIndex = function(position) {
   return position * 2 + 1;
+}
+
+MaxHeap.prototype.toString = function() {
+  return this.array.toString();
 }
 
 module.exports = {
