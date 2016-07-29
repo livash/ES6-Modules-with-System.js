@@ -19,11 +19,20 @@ describe("Max Heap", function() {
     expect(heap.array.length === 3).toBeTruthy();
   });
 
-  it('should retturn the correct value for the max number inserted into the heap', function() {
+  it('should return the correct value for the max number inserted into the heap', function() {
     var heap = new MH.MaxHeap();
     heap.add(10)
         .add(20)
         .add(30);
       expect(heap.getMax()).toBe(30);
+  });
+
+  it('should return correct toString representation of a MaxHeap object', function() {
+    var heap = new MH.MaxHeap();
+    var arr = [10,20,30,40];
+    arr.forEach(function(item) {
+      heap.add(item);
+    })
+      expect(heap.toString()).toBe(arr.reverse().toString());
   });
 });
