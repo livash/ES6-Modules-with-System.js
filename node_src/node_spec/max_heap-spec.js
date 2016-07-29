@@ -32,7 +32,13 @@ describe("Max Heap", function() {
     var arr = [10,20,30,40];
     arr.forEach(function(item) {
       heap.add(item);
-    })
-      expect(heap.toString()).toBe(arr.reverse().toString());
+    });
+    expect(heap.toString()).toBe(arr.reverse().toString());
+  });
+
+  it("should have a method to return the parentIndex of an element based on it's position in the array", function() {
+    var heap = new MH.MaxHeap();
+    expect(heap.getParentIndex(3)).toBe(1);
+    expect(heap.getParentIndex(21)).toBe(10);
   });
 });
