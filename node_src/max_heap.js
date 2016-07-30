@@ -8,7 +8,7 @@ MaxHeap.prototype.getMax = function() {
 
 MaxHeap.prototype.add = function(val) {
   if (val === undefined || typeof val !== 'number') {
-    throw "Invalid data for the Max Heap";
+    throw new Error("Invalid data for the Max Heap");
   }
   this.array.push(val);
   this.bubbleUp(this.array.length, val);
