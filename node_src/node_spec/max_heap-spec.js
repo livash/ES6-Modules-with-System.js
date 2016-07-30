@@ -22,6 +22,7 @@ describe("Max Heap", function() {
   it("should throw an error when trying to add a non-numeric input", function() {
     var heap = new MH.MaxHeap();
     expect(function() { heap.add('foo'); }).toThrow("Invalid data for the Max Heap");
+    expect(function() { heap.add(); }).toThrow("Invalid data for the Max Heap");
   });
 
   it('should return the correct value for the max number inserted into the heap', function() {
