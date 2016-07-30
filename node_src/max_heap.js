@@ -80,6 +80,10 @@ MaxHeap.prototype.toString = function() {
   return this.array.toString();
 }
 
+MaxHeap.prototype.size = function() {
+  return this.array.length;
+}
+
 module.exports = {
   MaxHeap: MaxHeap
 }

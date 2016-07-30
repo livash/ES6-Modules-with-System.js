@@ -41,4 +41,12 @@ describe("Max Heap", function() {
     expect(heap.getParentIndex(3)).toBe(1);
     expect(heap.getParentIndex(21)).toBe(10);
   });
+
+  it("should retrun the size of the stack", function() {
+    var heap = new MH.MaxHeap();
+    heap.add(10)
+        .add(20)
+        .add(30);
+      expect(heap.size()).toBe(3);
+  });
 });
