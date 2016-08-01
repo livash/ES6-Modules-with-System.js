@@ -47,6 +47,11 @@ describe("Max Heap", function() {
     expect(heap.toString()).toBe("30,10,20");
   });
 
+  it("should have a bubbleDown method", function() {
+    var heap = new MH.MaxHeap();
+    expect(typeof heap.bubbleDown).toBe('function');
+  });
+
   it('should return correct toString representation of a MaxHeap object', function() {
     var heap = new MH.MaxHeap();
     var arr = [10,20,30,40];
