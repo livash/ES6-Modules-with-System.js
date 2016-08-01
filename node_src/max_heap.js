@@ -1,11 +1,19 @@
+'use strict';
+
 var MaxHeap = function() {
   this.array = [];
 };
 
+//@return the Max number in the heap
 MaxHeap.prototype.getMax = function() {
   return this.array[0];
 };
 
+/*
+  mathod adds numbers to Max Heap
+  @param val - number to be kept in the heap
+  @return - heap object
+*/
 MaxHeap.prototype.add = function(val) {
   if (typeof val !== 'number') {
     throw new Error("Invalid data for the Max Heap");
@@ -17,7 +25,9 @@ MaxHeap.prototype.add = function(val) {
 };
 
 MaxHeap.prototype.bubbleUp = function(childIndex) {
-  if (childIndex < 0) return;
+  if (typeof childIndex !== 'number' || childIndex < 0) {
+    throw new Error("Invalid input value");
+  };
   var parentIndex = this.getParentIndex(childIndex),
       childVal = this.getValue(childIndex),
       parentVal = this.getValue(parentIndex);
@@ -47,10 +57,11 @@ MaxHeap.prototype.swap = function(i, j) { // one-based indexes "i" and "j"
 };
 
 MaxHeap.prototype.removeMax = function() {
-  var first = this.array.shift();
+  var first = this.array.shift(),
       last = this.array.pop();
-  this.array.unshift(last);
-  this.bubbleDown(1);
+
+  this.array.unshift(last); // add last item to the front of the array
+  this.bubbleDown(1); // start bubbleDown process starting with the first element in the array
 
   return first;
 }

@@ -6,7 +6,7 @@ describe("Max Heap", function() {
     expect(heap.array.length).toBe(0);
   });
 
-  it("should a heap with a inner property called 'array'", function() {
+  it("should create a heap with a inner property called 'array'", function() {
     var heap = new MH.MaxHeap();
     expect(heap.hasOwnProperty('array')).toBeTruthy();
   });
@@ -40,8 +40,9 @@ describe("Max Heap", function() {
         .add(30)
         .add(40);
     var beforeRemoveMax = heap.getMax();
-    heap.removeMax();
+    var maxNumberRemoved = heap.removeMax();
     var afterRemoveMax = heap.getMax();
+    expect(maxNumberRemoved).toBe(40);
     expect(beforeRemoveMax).toBe(40);
     expect(afterRemoveMax).toBe(30);
     expect(heap.toString()).toBe("30,10,20");
@@ -50,6 +51,17 @@ describe("Max Heap", function() {
   it("should have a bubbleDown method", function() {
     var heap = new MH.MaxHeap();
     expect(typeof heap.bubbleDown).toBe('function');
+  });
+
+  it("should throw an error when bubbleUp method is initialized with a non-numeric input", function() {
+    var heap = new MH.MaxHeap();
+    expect(function() { heap.bubbleUp('foo'); }).toThrow('Invalid input value');
+    expect(function() { heap.bubbleUp(); }).toThrow('Invalid input value');
+  });
+
+  it("should have a bubbleUp method", function() {
+    var heap = new MH.MaxHeap();
+    expect(typeof heap.bubbleUp).toBe('function');
   });
 
   it('should return correct toString representation of a MaxHeap object', function() {
@@ -67,7 +79,7 @@ describe("Max Heap", function() {
     expect(heap.getParentIndex(21)).toBe(10);
   });
 
-  it("should retrun the size of the stack", function() {
+  it("should return the size of the stack", function() {
     var heap = new MH.MaxHeap();
     heap.add(10)
         .add(20)
