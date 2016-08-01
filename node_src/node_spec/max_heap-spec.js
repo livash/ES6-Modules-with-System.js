@@ -30,7 +30,21 @@ describe("Max Heap", function() {
     heap.add(10)
         .add(20)
         .add(30);
-      expect(heap.getMax()).toBe(30);
+    expect(heap.getMax()).toBe(30);
+  });
+
+  it("should be able to remove the maxNumber off the heap", function() {
+    var heap = new MH.MaxHeap();
+    heap.add(10)
+        .add(20)
+        .add(30)
+        .add(40);
+    var beforeRemoveMax = heap.getMax();
+    heap.removeMax();
+    var afterRemoveMax = heap.getMax();
+    expect(beforeRemoveMax).toBe(40);
+    expect(afterRemoveMax).toBe(30);
+    expect(heap.toString()).toBe("30,10,20");
   });
 
   it('should return correct toString representation of a MaxHeap object', function() {

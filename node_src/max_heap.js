@@ -63,7 +63,11 @@ MaxHeap.prototype.bubbleDown = function(parentIndex) { // one-based index
       rightChildVal = this.getValue(rightChildIndex);
 
   if (parentVal < rightChildVal && parentVal < leftChildVal) {
-    // TODO finish this
+    if (rightChildVal > leftChildVal) {
+      this.swap(parentIndex, rightChildIndex);
+    } else {
+      this.swap(parentIndex, leftChildIndex);
+    }
   }
 
 }
