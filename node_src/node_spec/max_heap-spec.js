@@ -11,6 +11,18 @@ describe("Max Heap", function() {
     expect(heap.hasOwnProperty('array')).toBeTruthy();
   });
 
+  it("should create a heap with limitSize property", function() {
+    var heap = new MH.MaxHeap(3);
+    expect(heap.limitSize).toBe(3);
+  });
+
+  it("should keep the size of a heap to be less or equal to the limitSize property", function() {
+    var limitSize = 3;
+    var heap = new MH.MaxHeap(limitSize);
+    heap.add(1).add(2).add(3).add(4).add(5);
+    expect(heap.size()).toBe(limitSize);
+  });
+
   it("should be able to add value", function() {
     var heap = new MH.MaxHeap();
     heap.add(100)

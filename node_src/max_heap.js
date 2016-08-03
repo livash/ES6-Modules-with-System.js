@@ -1,7 +1,15 @@
 'use strict';
 
-var MaxHeap = function() {
+// Max Heap
+// if initialized with limit size parameter
+// this would mean that the heap will be no larger than the limit size,
+// for example limit size fo 100 would mean that there will be
+// up to 100 elements in a stack
+
+var MaxHeap = function(limitSize) {
   this.array = [];
+  this.limitSize = limitSize;
+  this.counter = 0;
 };
 
 //@return the Max number in the heap
@@ -18,8 +26,13 @@ MaxHeap.prototype.add = function(val) {
   if (typeof val !== 'number') {
     throw new Error("Invalid data for the Max Heap");
   }
+  this.counter += 1;
   this.array.push(val);
   this.bubbleUp(this.array.length, val);
+  if (this.counter > this.limitSize) {
+    // discard the last element
+    this.array.pop();
+  }
 
   return this;
 };
@@ -80,7 +93,6 @@ MaxHeap.prototype.bubbleDown = function(parentIndex) { // one-based index
       this.swap(parentIndex, leftChildIndex);
     }
   }
-
 }
 
 MaxHeap.prototype.getLeftChildIndex = function(position) {
