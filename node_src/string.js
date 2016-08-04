@@ -2,7 +2,7 @@
 
 var isPalindromeShort = function (str) {
   return str === str.split("").reverse().join("");
-}
+};
 
 var isPalindromeLong = function (str) {
   var i = 0,
@@ -15,9 +15,24 @@ var isPalindromeLong = function (str) {
   }
 
   return true;
-}
+};
+
+var uniqueChars = function (str) {
+  var result = {};
+  for (var i = 0; i < str.length; i++) {
+    var char = str[i];
+    if ( result.hasOwnProperty(char) ) {
+      result[char] += 1;
+    } else {
+      result[char] = 1;
+    }
+  }
+
+  return result;
+};
 
 module.exports = {
   isPalindromeShort: isPalindromeShort,
-  isPalindromeLong: isPalindromeLong
+  isPalindromeLong: isPalindromeLong,
+  uniqueChars: uniqueChars
 }

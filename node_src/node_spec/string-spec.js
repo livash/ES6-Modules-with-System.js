@@ -25,4 +25,24 @@ describe("String related methods", function() {
 
   });
 
+  describe("method uniqueChars", function() {
+    it("should return an object", function() {
+      var result = string.uniqueChars("hello");
+      expect(typeof result).toBe("object");
+    });
+
+    it("should return an object with correct count", function() {
+      var result = string.uniqueChars("hii");
+      var expectedResult = {
+        h: 1,
+        i: 2
+      };
+
+      for ( var prop in result ) {
+        expect( expectedResult.hasOwnProperty(prop) ).toBeTruthy();
+        expect( expectedResult[prop] ).toBe(result[prop]);
+      }
+    });
+  });
+
 });
