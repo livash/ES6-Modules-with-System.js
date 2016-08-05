@@ -42,7 +42,11 @@ Queue.prototype.toString = function() {
   var node = this.first;
   var result = "";
   while (node !== null) {
-    result += node.val + " < ";
+    if (typeof node.val === "object") {
+      result += node.val.val + " < ";
+    } else {
+      result += node.val + " < ";
+    }
     node = node.next;
   }
 

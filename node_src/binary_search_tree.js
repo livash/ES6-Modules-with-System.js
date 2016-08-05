@@ -175,6 +175,19 @@ BST.prototype.toString = function() {
   return q.toString();
 }
 
+function inOrder(node, q) {
+  if (node.left !== null) inOrder(node.left, q);
+  q.enqueue(node);
+  if (node.right !== null) inOrder(node.right, q);
+}
+
+BST.prototype.traverseInOrder = function() {
+  var node = this.root,
+      queue = new Queue.Queue();
+  inOrder(node, queue);
+  return queue;
+}
+
 // var tree = new BST();
 // tree.add(100);
 // tree.add(98);
