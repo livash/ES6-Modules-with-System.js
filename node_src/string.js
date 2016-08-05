@@ -31,8 +31,32 @@ var uniqueChars = function (str) {
   return result;
 };
 
+/*
+  @param str - argument of type string
+  @result - shortened/compressed string
+
+  Example, "aaaccbbbd" => "a3c2b3d1"
+           "abc" => "abc"
+*/
+
+var compressString = function(str) {
+  if (typeof str !== 'string') return new Error("Input should be a string");
+  if (str.length <= 2) return str;
+
+  var result,
+      i = 0;
+  while (i < str.length) {
+    var char = str[i];
+    var matchLength = str.substring(i).match(char + "+")[0].length;
+    result += char + matchLength;
+  }
+
+  return (result.length >= str.length) ? str : result;
+}
+
 module.exports = {
   isPalindromeShort: isPalindromeShort,
   isPalindromeLong: isPalindromeLong,
-  uniqueChars: uniqueChars
+  uniqueChars: uniqueChars,
+  compressString: compressString
 }
