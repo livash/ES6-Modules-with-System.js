@@ -203,6 +203,20 @@ BST.prototype.traversePreOrder = function() {
   return queue;
 }
 
+function postOrder(node, q) {
+  if (node.left !== null) postOrder(node.left, q);
+  if (node.right !== null) preOrder(node.right, q);
+  q.enqueue(node);
+}
+
+BST.prototype.traversePostOrder = function() {
+  var node = this.root,
+      queue = new Queue.Queue();
+  postOrder(node, queue);
+
+  return queue;
+}
+
 // var tree = new BST();
 // tree.add(100);
 // tree.add(98);

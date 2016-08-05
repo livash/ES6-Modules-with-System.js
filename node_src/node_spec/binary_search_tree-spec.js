@@ -156,8 +156,9 @@ describe("Binary Tree", function() {
     });
   });
 
-  describe("BST.traverseInOrder", function() {
+  describe("BST.traverseInOrder, BST.traversePreOrder, BST.traversePostOrder", function() {
     var tree;
+    var methods = ["traverseInOrder", "traversePreOrder", "traversePostOrder"];
 
     beforeEach(function() {
       tree = new BST.BST();
@@ -165,32 +166,26 @@ describe("Binary Tree", function() {
     });
 
     it("should return an object", function() {
-      var result = tree.traverseInOrder();
-      expect(typeof result).toBe('object');
+      methods.forEach(function(method) {
+        var result = tree[method]();
+        expect(typeof result).toBe('object');
+      });
     });
 
-    it("should traverse the tree in order", function() {
+    it("should traverse a tree in the in-order order", function() {
       var result = tree.traverseInOrder();
       expect(result.toString()).toBe("1 < 4 < 5 < 6 < 10 < 20 < 30 < ");
     });
-  });
 
-  describe("BST.traversePreOrder", function() {
-    var tree;
-
-    beforeEach(function() {
-      tree = new BST.BST();
-      tree.add(10).add(20).add(5).add(30).add(4).add(6).add(1);
-    });
-
-    it("should return an object", function() {
-      var result = tree.traversePreOrder();
-      expect(typeof result).toBe('object');
-    });
-
-    it("should traverse the tree in order", function() {
+    it("should traverse a tree in the pre-order order", function() {
       var result = tree.traversePreOrder();
       expect(result.toString()).toBe("10 < 5 < 4 < 1 < 6 < 20 < 30 < ");
     });
+
+    it("should traverse a tree in the post-order order", function() {
+      var result = tree.traversePostOrder();
+      expect(result.toString()).toBe("1 < 4 < 6 < 5 < 20 < 30 < 10 < ");
+    });
   });
+
 });
