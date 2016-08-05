@@ -185,6 +185,21 @@ BST.prototype.traverseInOrder = function() {
   var node = this.root,
       queue = new Queue.Queue();
   inOrder(node, queue);
+
+  return queue;
+}
+
+function preOrder(node, q) {
+  q.enqueue(node);
+  if (node.left !== null) preOrder(node.left, q);
+  if (node.right !== null) preOrder(node.right, q);
+}
+
+BST.prototype.traversePreOrder = function() {
+  var node = this.root,
+      queue = new Queue.Queue();
+  preOrder(node, queue);
+
   return queue;
 }
 

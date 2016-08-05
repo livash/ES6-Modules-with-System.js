@@ -174,4 +174,23 @@ describe("Binary Tree", function() {
       expect(result.toString()).toBe("1 < 4 < 5 < 6 < 10 < 20 < 30 < ");
     });
   });
+
+  describe("BST.traversePreOrder", function() {
+    var tree;
+
+    beforeEach(function() {
+      tree = new BST.BST();
+      tree.add(10).add(20).add(5).add(30).add(4).add(6).add(1);
+    });
+
+    it("should return an object", function() {
+      var result = tree.traversePreOrder();
+      expect(typeof result).toBe('object');
+    });
+
+    it("should traverse the tree in order", function() {
+      var result = tree.traversePreOrder();
+      expect(result.toString()).toBe("10 < 5 < 4 < 1 < 6 < 20 < 30 < ");
+    });
+  });
 });
