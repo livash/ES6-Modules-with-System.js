@@ -40,7 +40,7 @@ var uniqueChars = function (str) {
 */
 
 var compressString = function(str) {
-  if (typeof str !== 'string') return new Error("Input should be a string");
+  if (typeof str !== 'string') throw new Error("Input should be a string");
   if (str.length <= 2) return str;
 
   var result,

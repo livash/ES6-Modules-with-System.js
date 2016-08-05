@@ -45,4 +45,9 @@ describe("String related methods", function() {
     });
   });
 
+  describe("compressString method", function() {
+    it("should throw an error if input argument is not a string", function() {
+      expect(function() { string.compressString(100); }).toThrow("Input should be a string");
+    });
+  });
 });
