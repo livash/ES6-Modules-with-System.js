@@ -1,10 +1,16 @@
 // String related methods
 
+var validate = function(str) {
+  if (typeof str !== 'string') throw new TypeError("Input should be a string");
+}
+
 var isPalindromeShort = function (str) {
+  validate(str);
   return str === str.split("").reverse().join("");
 };
 
 var isPalindromeLong = function (str) {
+  validate(str);
   var i = 0,
       j = str.length - 1;
   for (i; i < str.length; i++, j--) {
@@ -18,6 +24,7 @@ var isPalindromeLong = function (str) {
 };
 
 var uniqueChars = function (str) {
+  validate(str);
   var result = {};
   for (var i = 0; i < str.length; i++) {
     var char = str[i];
@@ -40,7 +47,7 @@ var uniqueChars = function (str) {
 */
 
 var compressString = function(str) {
-  if (typeof str !== 'string') throw new Error("Input should be a string");
+  validate(str);
   if (str.length <= 2) return str;
 
   var result,

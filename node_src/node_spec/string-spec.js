@@ -2,6 +2,21 @@ var string = require('../string');
 
 describe("String related methods", function() {
 
+  describe(" all methods should throw an error if input is not a string", function() {
+    for (var method in string) {
+      it( method + " should throw an error if input is not a string", function() {
+        var func1 = function() {
+          string[method](); // call method with undefined argument
+        };
+        var func2 = function() {
+          string[method](100); // call method with a number argument
+        }
+        expect(func1).toThrow("Input should be a string");
+        expect(func2).toThrow("Input should be a string");
+      });
+    }
+  });
+
   describe("isPalindrome method", function() {
     var methods = ["isPalindromeShort", "isPalindromeLong"];
 
@@ -46,8 +61,5 @@ describe("String related methods", function() {
   });
 
   describe("compressString method", function() {
-    it("should throw an error if input argument is not a string", function() {
-      expect(function() { string.compressString(100); }).toThrow("Input should be a string");
-    });
   });
 });
