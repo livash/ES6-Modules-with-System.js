@@ -7,10 +7,10 @@ var getLoopNumber = function(matrix) {
   var rows = matrix.length,
       cols = matrix[0].length;
 
-  if (rows === cols || rows > cols) {
-    return (rows % 2 === 0) ? rows/2 : Math.ceil(rows/2);
-  } else { // rows < cols
-    return (cols % 2 === 0) ? cols/2 : Math.ceil(cols/2);
+  if (rows === cols || cols > rows) {
+    return Math.ceil(rows/2);
+  } else { // rows > cols
+    return Math.ceil(cols/2);
   }
 };
 
@@ -66,14 +66,14 @@ var loopShape = function(m, loop) {
     }
   } else if (rows > cols) {
     if (cols % 2 == 0) {
-      return (loop < loopNum - 1) ? 'rectangle' : 'none';
+      return (loop < loopNum) ? 'rectangle' : 'none';
     } else {
       return (loop < loopNum - 1) ? 'rectangle' : 'verticalLine';
     }
 
   } else { // rows < cols
     if (rows % 2 == 0) {
-      return (loop < loopNum - 1) ? 'rectangle' : 'none';
+      return (loop < loopNum) ? 'rectangle' : 'none';
     } else {
       return (loop < loopNum - 1) ? 'rectangle' : 'horizontalLine';
     }
@@ -84,6 +84,7 @@ var printLoop = function(m, loop) {
   var result = [];
   var rows = m.length,
       cols = m[0].length;
+
   switch(loopShape(m, loop)) {
     case 'square2x2':
       result.push(printRow(m, loop, loop, 1)); // move left to right
@@ -96,8 +97,13 @@ var printLoop = function(m, loop) {
       result.push(printCol(m, loop, loop, -1)); // move bottom to top
       break;
     case 'verticalLine':
-      result.push(printRow(m, loop, loop, 1)); // move left to right
-      result.push(printRow(m, rows-loop - 1, loop, -1)); // move right to left
+      var lineLength = rows - 2 * loop,
+          j = 0;
+      while (j < lineLength) {
+        var rowNum = loop + j
+        result.push(printRow(m, rowNum, loop, 1));
+        j++;
+      }
       break;
     case 'horizontalLine':
       result.push(printRow(m, loop, loop, 1)); // move left to right

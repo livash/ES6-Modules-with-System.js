@@ -6,6 +6,22 @@ describe('printSpiral function', function() {
     expect(typeof result).toBe('string');
   });
 
+  it('should iterate correctly over a 1x3 square matrix', function() {
+    var m = [[1,2,3]];
+    var result = matrix.printSpiral(m);
+    expect(result).toBe('1,2,3');
+  });
+
+  it('should iterate correctly over a 3x1 square matrix', function() {
+    var m = [
+      [1],
+      [2],
+      [3]
+    ];
+    var result = matrix.printSpiral(m);
+    expect(result).toBe('1,2,3');
+  });
+
   it('should iterate correctly over a 2x2 square matrix', function() {
     var m = [[1,2], [4,3]];
     var result = matrix.printSpiral(m);
@@ -33,7 +49,7 @@ describe('printSpiral function', function() {
     expect(result).toBe('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16');
   });
 
-  it('should iterate correctly over a 2x4 matrix', function() {
+  it('should iterate correctly over a 4x2 matrix', function() {
     var m = [
       [1,2],
       [8,3],
@@ -44,7 +60,7 @@ describe('printSpiral function', function() {
     expect(result).toBe('1,2,3,4,5,6,7,8');
   });
 
-  it('should iterate correctly over a 4x2 matrix', function() {
+  it('should iterate correctly over a 2x4 matrix', function() {
     var m = [
       [1,2,3,4],
       [8,7,6,5]
@@ -74,4 +90,15 @@ describe('printSpiral function', function() {
     expect(result).toBe('1,2,3,4,5,6,7,8,9,10,11,12');
   });
 
+  it('should iterate correctly over a 5x3 square matrix', function() {
+    var m = [
+      [1, 2, 3],
+      [12,13,4],
+      [11,14,5],
+      [10,15,6],
+      [9, 8, 7]
+    ];
+    var result = matrix.printSpiral(m);
+    expect(result).toBe('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15');
+  });
 });
