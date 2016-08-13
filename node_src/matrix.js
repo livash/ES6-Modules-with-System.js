@@ -123,6 +123,14 @@ var printSpiral = function(matrix) {
   return result;
 };
 
+// for Pablo
+// var m = [
+//   [1,2,3],
+//   [8,9,4],
+//   [7,6,5]
+// ];
+// console.log(printSpiral(m));
+
 module.exports = {
   printSpiral: printSpiral
 }
