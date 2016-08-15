@@ -6,6 +6,17 @@ describe('printSpiral function', function() {
     expect(typeof result).toBe('string');
   });
 
+  it('should throw an error if no arguments is passed to the method', function() {
+    var error = "input should be an array of arrays";
+    expect(function() { matrix.printSpiral();}).toThrow(error);
+  });
+
+  it('should throw an error if input argument is an  mixed array', function() {
+    var error = "input should be an array of arrays";
+    var input = [[1,2,3], 'bar'];
+    expect(function() { matrix.printSpiral(input);}).toThrow(error);
+  });
+
   it('should iterate correctly over a 1x1 square matrix', function() {
     var m = [[1]];
     var result = matrix.printSpiral(m);

@@ -114,7 +114,25 @@ var printLoop = function(m, loop) {
   return result.join(',');
 };
 
+var validate = function(m) {
+  var error = new Error("input should be an array of arrays");
+  if (!m) { // argument is falsey
+    throw error;
+
+  } else if ( !(m instanceof Array) ) { // argument is not an Array
+    throw error;
+
+  } else if (m instanceof Array) { // each element in the array should be an array
+    var condition2 = !(m.every(function(el) {
+      return el instanceof Array;
+    }));
+
+    if (condition2) throw error;
+  }
+}
+
 var printSpiral = function(matrix) {
+  validate(matrix);
   var loopNum = getLoopNumber(matrix),
       loop = 0,
       result = [];
