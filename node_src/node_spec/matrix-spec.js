@@ -6,6 +6,12 @@ describe('printSpiral function', function() {
     expect(typeof result).toBe('string');
   });
 
+  it('should iterate correctly over a 1x1 square matrix', function() {
+    var m = [[1]];
+    var result = matrix.printSpiral(m);
+    expect(result).toBe('1');
+  });
+
   it('should iterate correctly over a 1x3 square matrix', function() {
     var m = [[1,2,3]];
     var result = matrix.printSpiral(m);
