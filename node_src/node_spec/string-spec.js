@@ -60,6 +60,15 @@ describe("String related methods", function() {
     });
   });
 
-  describe("compressString method", function() {
+  describe("repeat method", function() {
+    it('should return a string', function() {
+      var result = string.repeat('foo', 1);
+      expect(typeof result).toBe('string');
+    });
+
+    it('should returna correct string with 5 repetitions', function() {
+      var result = string.repeat('foo', 5);
+      expect(result).toBe('foofoofoofoofoo');
+    });
   });
 });

@@ -61,9 +61,26 @@ var compressString = function(str) {
   return (result.length >= str.length) ? str : result;
 }
 
+/*
+  @param str - input string
+  @param num - number of times to rpepeat a string
+  @result - a string containing 'num' repetitions of an input string
+  For example, repeat('foo', 3) => 'foofoofoo'
+*/
+var repeat = function(str, num) {
+  validate(str);
+  if (num === 0) return '';
+  if (num === 1) return str;
+  var mid = Math.floor(num/2);
+  var result = repeat(str, mid);
+
+  return (num % 2 > 0) ? str + result + result : result + result;
+}
+
 module.exports = {
   isPalindromeShort: isPalindromeShort,
   isPalindromeLong: isPalindromeLong,
   uniqueChars: uniqueChars,
-  compressString: compressString
+  compressString: compressString,
+  repeat: repeat
 }
