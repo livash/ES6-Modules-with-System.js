@@ -4,20 +4,24 @@
 // to field, value "1", and returns a number of contiguous fields
 // in the world 
 
-helper = require('world_helper.js');
+helper = require('./world_helper');
 
-var World = function(n,m) {
+var World = function (n,m) {
   this.rows = n;
   this.cols = m;
   this.board = getBoard(n, m);
   this.fields = [];
-}
+};
 
-World.prototype.addField = (r, c) {
+World.prototype.addField = function (r, c) {
   if (this.board[r][c] !== 1) {
     this.board[r][c] = 1;
     this.updateFileds(r,c);
   }
 
-  return this.fileds.length;
-}
+  return this.fields.length;
+};
+
+World.prototype.updateFields = function (r,c) {
+  
+};
