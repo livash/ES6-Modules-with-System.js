@@ -33,8 +33,9 @@ var makeRemember = function (slowFun) {
 
 var callTimes = function (fun, num) {
   var counter = 0;
-  var num = num || 1;
+  var num = num || 1;  
   return function () {
+    counter += 1;    
     if (counter >= num) {
       throw new Error('This function exceeded the limit of times to be called');
     } else {

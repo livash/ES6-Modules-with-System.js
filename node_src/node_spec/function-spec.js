@@ -26,22 +26,37 @@ describe('Module Functions that return Functions', function () {
   });
 
   describe('callTimes funciton', function () {
-    var adder;
+    var adder, helper;
     beforeEach(function () {
       adder = function(x, y) {
         return x + y;
-      }
+      };
+      helper = null;
     });
 
     it('returns a function that can be called 3 times', function () {
       var result = myFunction.callTimes(adder, 3);
-      var helper = function () {
+      helper = function () {
         adder();
         adder();
         adder();
         return true;
-      }
+      };
       expect(helper()).toBeTruthy();
+    });
+
+    xit('thorws an error if produced function is called more than the resurved number of times', function () {
+      var result = myFunction.callTimes(adder, 2);
+      helper = function () {
+        adder(1);
+        adder(1);
+        adder(1);
+        return true;
+      };
+
+      expect(function() {
+        helper(); 
+      }).toThrow("message");
     });
   });
 });
