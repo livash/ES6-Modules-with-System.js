@@ -2,8 +2,8 @@
 // var foo = makeAdder(3);
 // foo(2); // -> 5
 
-var makeAdder = function(x) {
-  return function(y) {
+var makeAdder = function (x) {
+  return function (y) {
     return x + y;
   };
 }
@@ -15,7 +15,7 @@ var makeAdder = function(x) {
 //bar("hello") -> 5 <slow>
 //bar("hello") -> 5 <fast>
 
-var makeRemember = function(slowFun) {
+var makeRemember = function (slowFun) {
   var inputs = [],
       outputs = [];
   return function (x) {
@@ -31,7 +31,20 @@ var makeRemember = function(slowFun) {
   };
 }
 
+var callTimes = function (fun, num) {
+  var counter = 0;
+  var num = num || 1;
+  return function () {
+    if (counter >= num) {
+      throw new Error('This function exceeded the limit of times to be called');
+    } else {
+      return fun.apply(null, arguments);
+    }
+  };
+}
+
 module.exports = {
   makeAdder: makeAdder,
-  makeRemember: makeRemember
+  makeRemember: makeRemember,
+  callTimes: callTimes
 }

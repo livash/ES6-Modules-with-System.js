@@ -25,7 +25,23 @@ describe('Module Functions that return Functions', function () {
     });
   });
 
-  describe('makeRemember funciton', function () {
+  describe('callTimes funciton', function () {
+    var adder;
+    beforeEach(function () {
+      adder = function(x, y) {
+        return x + y;
+      }
+    });
 
+    it('returns a function that can be called 3 times', function () {
+      var result = myFunction.callTimes(adder, 3);
+      var helper = function () {
+        adder();
+        adder();
+        adder();
+        return true;
+      }
+      expect(helper()).toBeTruthy();
+    });
   });
 });
