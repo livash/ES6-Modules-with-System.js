@@ -1,13 +1,17 @@
 myFunction = require('../function');
 
-describe('Functions that return Functions', function () {
+describe('Module Functions that return Functions', function () {
+
+  it('should return a function for all of it\'s members', function () {
+    var method;
+    for (method in myFunction) {
+      var result = myFunction[method]();
+      expect(typeof result).toBe('function');
+    }
+  });
 
   describe('makeAdder funciton', function () {
 
-    it('should return a function', function () {
-      var result = myFunction.makeAdder(1);
-      expect(typeof result).toBe('function');
-    });
 
     it('produces a function which when called with one argument returns a sum of the two arguments', function () {
       var result = myFunction.makeAdder(1)(2);
@@ -19,5 +23,9 @@ describe('Functions that return Functions', function () {
       expect(typeof result).toBe('number');
       expect(result).toBeNaN();
     });
+  });
+
+  describe('makeRemember funciton', function () {
+
   });
 });
