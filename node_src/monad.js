@@ -1,4 +1,4 @@
-function Monad() {
+function Monad(modifier) {
   var prototype = Object.create(null);
   function unit(value) {
     var monad = Object.create(prototype);
@@ -6,6 +6,10 @@ function Monad() {
     monad.bind = function(func, args) {
       var allArgs = [value].concat(Array.prototype.slice.apply(args || []));
       return func.apply(undefined, allArgs);
+    }
+
+    if (typeof modifier === 'function') {
+      modifier(monad, value);
     }
 
     return monad;
@@ -35,9 +39,21 @@ function myFunc(str) {
 }
 
 var monad = ajax("Hello from Olena");
-monad.bind(myFunc);
-
+monad.bind(myFunc);  // calls to monad.bind(myFunc), or monad.myFunc() produce the same result
 monad.myFunc();
+
+// ---- Example Using Monad with modifier ----
+var myModifier = function(monad, value) {
+  if (value === null || value === undefined) {
+    monad.is_null = true;
+    monad.bind = function() {
+      return monad;
+    }
+  }
+}
+var maybe = Monad(myModifier);
+var monad_two = maybe(null);
+monad_two.bind(myFunc);
 
 module.exports = {
   Monad: Monad
