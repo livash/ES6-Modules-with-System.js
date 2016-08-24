@@ -29,11 +29,29 @@ function singlePromise(str) {
 function processArrayOfPromises(arr) {
   return Promise.all(arr);
 }
-var arr = [singlePromise('Hello'), singlePromise('Hi'), singlePromise('Bye')];
-processArrayOfPromises(arr).then(function(data) {
-  console.log("Data from a promise array");
-  console.log(data);
-})
+
+// var arr = [singlePromise('Hello'), singlePromise('Hi'), singlePromise('Bye')];
+// processArrayOfPromises(arr).then(function(data) {
+//   console.log("Data from a promise array");
+//   console.log(data);
+// });
+
+// create an array of promises
+// @param num - integer for a number of promises in the array
+// @param shouldBeResolved - boolean identifying whether all promises in the array should be resolved or rejected
+// @result = array of promises
+function createArrayOfPromises(num, shouldBeResolved) {
+  var i, result = [];
+  for (i = 0; i < num; i++) {
+    var promise = shouldBeResolved ? Promise.resolve(i) : Promise.reject("rejected");
+    result.push(promise);
+  }
+
+  return result;
+}
+
+console.log(createArrayOfPromises(3, false));
+
 
 //testAPromise();
 // singlePromise('Hello Olena :)').then(function(data) {
