@@ -12,7 +12,6 @@ function testAPromise() {
     console.log(result);
   })
   .catch(function(err) {
-    console.log("caought an error");
     console.log(err);
   });
 }
