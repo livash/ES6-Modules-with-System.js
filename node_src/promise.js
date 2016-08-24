@@ -43,14 +43,25 @@ function processArrayOfPromises(arr) {
 function createArrayOfPromises(num, shouldBeResolved) {
   var i, result = [];
   for (i = 0; i < num; i++) {
-    var promise = shouldBeResolved ? Promise.resolve(i) : Promise.reject("rejected");
+    var promise;
+    switch (shouldBeResolved) {
+      case 1: // resolve
+        promise = Promise.resolve(i);
+        break;
+      case -1: // reject
+        promise = Promise.reject('rejected');
+        break;
+      default: // mixed array of promises
+        promise = (Math.random() * 10 > 5) ? Promise.resolve(i) : Promise.reject('rejected');
+        break;
+    }
     result.push(promise);
   }
 
   return result;
 }
 
-console.log(createArrayOfPromises(3, false));
+console.log(createArrayOfPromises(10, 0));
 
 
 //testAPromise();
