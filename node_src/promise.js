@@ -60,7 +60,11 @@ function createArrayOfPromises(num, shouldBeResolved) {
   return result;
 }
 
-console.log(createArrayOfPromises(10, 0));
+//console.log(createArrayOfPromises(10, 0));
+
+function hello() {
+  return "Hello";
+}
 
 
 //testAPromise();
