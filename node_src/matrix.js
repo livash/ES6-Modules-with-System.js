@@ -1,151 +1,43 @@
-/*
-  Given a 2D matrix of NxM dimentions
-  print out everey element in the matrix
-  using a spiral pattern
-*/
-var getLoopNumber = function(matrix) {
-  var rows = matrix.length,
-      cols = matrix[0].length;
+// Simple imperative solution
+// You can create a solution based on the number of steps and walk directions.
+function printSpiral(matrix) {
+    var startRow = 0,
+        endRow = matrix.length - 1,
+        startCol = 0,
+        endCol = matrix[0].length - 1;
 
-  if (rows === cols || cols > rows) {
-    return Math.ceil(rows/2);
-  } else { // rows > cols
-    return Math.ceil(cols/2);
-  }
-};
+    while (startRow <= endRow && startCol <= endCol) {
+        
+        // print first row
+        for (var i = startCol; i <= endCol; i++) {
+            console.log(matrix[startRow][i]);
+        }
+        startRow++;
 
-var printRow = function(m, rowNum, loop, direction) {
-  var cols = m[0].length;
-  var result = [];
-  if (direction > 0) { // move from left tor right
-    var first = loop,
-        last = cols - loop - 1;
-    for (var i = first; i <= last; i++) {
-      result.push(m[rowNum][i]);
-    }
-  } else { // move from right to left
-    var first = cols - loop - 1,
-        last = loop;
-    for (var j = first; j >= last; j--) {
-      result.push(m[rowNum][j]);
-    }
-  }
+        // print last col
+        for (var i = startRow; i <= endRow; i++) {
+            console.log(matrix[i][endCol]);
+        }
+        endCol--;
 
-  return result.join(',');
-};
+        // print last row inverse order
+        // need to protect against nxm, where n > m
+        if (startRow < endRow) {
+            for (var i = endCol; i >= startCol; i--) {
+                console.log(matrix[endRow][i]);
+            }
+            endRow--;
+        }
 
-var printCol = function(m, colNum, loop, direction) {
-  var rows = m.length;
-  var result = [];
-  if (direction > 0) { // move from top to bottom
-    var start = loop + 1,
-        finish = rows - loop - 2;
-    for (var i = start; i <=finish; i++) {
-      result.push(m[i][colNum]);
+        // print first col inverse order
+        if (startCol < endCol) {
+            for (var i = endRow; i >= startRow; i--) {
+                console.log(matrix[i][startCol]);
+            }
+            startCol++;
+        }
     }
-  } else { // move from bottom to top
-    var start = rows - loop - 2,
-        finish = loop + 1;
-    for (var j = start; j >=finish; j--) {
-      result.push(m[j][colNum]);
-    }
-  }
-
-  return result.join(',');
-};
-
-var loopShape = function(m, loop) {
-  var rows = m.length,
-      cols = m[0].length,
-      loopNum = getLoopNumber(m);
-  if (rows == cols) { // square matrix
-    if (rows % 2 == 0) {
-      return (loop < loopNum -1) ? 'rectangle' : 'square2x2';
-    } else {
-      return (loop < loopNum - 1) ? 'rectangle' : 'horizontalLine';
-    }
-  } else if (rows > cols) {
-    if (cols % 2 == 0) {
-      return (loop < loopNum) ? 'rectangle' : 'none';
-    } else {
-      return (loop < loopNum - 1) ? 'rectangle' : 'verticalLine';
-    }
-
-  } else { // rows < cols
-    if (rows % 2 == 0) {
-      return (loop < loopNum) ? 'rectangle' : 'none';
-    } else {
-      return (loop < loopNum - 1) ? 'rectangle' : 'horizontalLine';
-    }
-  }
 }
-
-var printLoop = function(m, loop) {
-  var result = [];
-  var rows = m.length,
-      cols = m[0].length;
-
-  switch(loopShape(m, loop)) {
-    case 'square2x2':
-      result.push(printRow(m, loop, loop, 1)); // move left to right
-      result.push(printRow(m, rows-loop - 1, loop, -1)); // move right to left
-      break;
-    case 'rectangle':
-      result.push(printRow(m, loop, loop, 1)); // move left to right
-      result.push(printCol(m, cols - loop - 1, loop, 1)); // move top to bottom
-      result.push(printRow(m, rows-loop -1, loop, -1)); // move right to left
-      result.push(printCol(m, loop, loop, -1)); // move bottom to top
-      break;
-    case 'verticalLine':
-      var lineLength = rows - 2 * loop,
-          j = 0;
-      while (j < lineLength) {
-        var rowNum = loop + j
-        result.push(printRow(m, rowNum, loop, 1));
-        j++;
-      }
-      break;
-    case 'horizontalLine':
-      result.push(printRow(m, loop, loop, 1)); // move left to right
-      break;
-    case 'none':
-      break;
-  }
-  return result.join(',');
-};
-
-var validate = function(m) {
-  var error = new Error("input should be an array of arrays");
-  if (!m) { // argument is falsey
-    throw error;
-
-  } else if ( !(m instanceof Array) ) { // argument is not an Array
-    throw error;
-
-  } else if (m instanceof Array) { // each element in the array should be an array
-    var condition2 = !(m.every(function(el) {
-      return el instanceof Array;
-    }));
-
-    if (condition2) throw error;
-  }
-}
-
-var printSpiral = function(matrix) {
-  validate(matrix);
-  var loopNum = getLoopNumber(matrix),
-      loop = 0,
-      result = [];
-  while (loop < loopNum) {
-    result.push(printLoop(matrix, loop));
-    loop++;
-  }
-
-  // process result string to remove empty strings joined on ','
-  result = result.join(',').replace(/,,/g, ',').replace(/,$/, '')
-
-  return result;
-};
 
 // for Pablo
 // var m = [
