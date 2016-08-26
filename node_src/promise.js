@@ -63,7 +63,7 @@ function createArrayOfPromises(num, shouldBeResolved) {
 //console.log(createArrayOfPromises(10, 0));
 
 function hello() {
-  return "Hello";
+  return "Hello and good bye";
 }
 
 
